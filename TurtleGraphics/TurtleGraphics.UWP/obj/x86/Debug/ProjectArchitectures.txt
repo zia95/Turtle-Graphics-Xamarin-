@@ -1,0 +1,1 @@
+C:\Users\ziaud\source\repos\TurtleGraphics\TurtleGraphics\TurtleGraphics.UWP\TurtleGraphics.UWP.csproj;x86

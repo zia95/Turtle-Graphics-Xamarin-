@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "67TdY4cqoInR0VKNDa/ySjxILszHgK90fNPzq9d3mJp2jAxfV7O6JfmQMZV9dfCQznuJUimI2rNdO/gqV6cd3A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ziaud\\source\\repos\\TurtleGraphics\\TurtleGraphics\\TurtleGraphics.iOS\\TurtleGraphics.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ziaud\\.nuget\\packages\\skiasharp\\1.68.3\\skiasharp.1.68.3.nupkg.sha512",
+    "C:\\Users\\ziaud\\.nuget\\packages\\skiasharp.views\\1.68.3\\skiasharp.views.1.68.3.nupkg.sha512",
+    "C:\\Users\\ziaud\\.nuget\\packages\\skiasharp.views.forms\\1.68.3\\skiasharp.views.forms.1.68.3.nupkg.sha512",
+    "C:\\Users\\ziaud\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.5.0.495\\xamarin.forms.4.5.0.495.nupkg.sha512"
+  ],
+  "logs": []
+}
