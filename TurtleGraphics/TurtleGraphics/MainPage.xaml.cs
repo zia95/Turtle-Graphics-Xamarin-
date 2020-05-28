@@ -17,7 +17,6 @@ namespace TurtleGraphics
     {
 
 
-
         public MainPage()
         {
             InitializeComponent();
@@ -64,7 +63,7 @@ namespace TurtleGraphics
             {
                 tur_org = new SKPoint(e.Info.Width / 2, e.Info.Height / 2);
                 turtle = new SkiaTurtle(tur_org, 0,
-            new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = 10f, StrokeCap = SKStrokeCap.Round, Color = SKColors.Red, IsAntialias = true },
+            new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = 2f, StrokeCap = SKStrokeCap.Round, Color = SKColors.Red, IsAntialias = true },
             new SKBitmap(e.Info.Width, e.Info.Height));
 
                 turtle.Canvas.Clear(SKColors.Black);

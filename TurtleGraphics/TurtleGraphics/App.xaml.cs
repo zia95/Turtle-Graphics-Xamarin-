@@ -10,7 +10,8 @@ namespace TurtleGraphics
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+            this.MainPage = new PagesNavigation();
         }
 
         protected override void OnStart()

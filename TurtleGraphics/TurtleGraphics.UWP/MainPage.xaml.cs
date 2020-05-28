@@ -21,6 +21,8 @@ namespace TurtleGraphics.UWP
         {
             this.InitializeComponent();
 
+            
+
             LoadApplication(new TurtleGraphics.App());
         }
     }
