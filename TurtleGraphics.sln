@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurtleGraphics.iOS", "Turtl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurtleGraphics", "TurtleGraphics\TurtleGraphics\TurtleGraphics.csproj", "{0B135496-D427-4B3D-9A89-3E221A32F281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurtleGraphics.WPF", "TurtleGraphics.WPF\TurtleGraphics.WPF.csproj", "{A482BC41-1B91-49D6-9B23-94B12A1A4E35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurtleGraphics.WPF", "TurtleGraphics\TurtleGraphics.WPF\TurtleGraphics.WPF.csproj", "{A482BC41-1B91-49D6-9B23-94B12A1A4E35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

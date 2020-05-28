@@ -150,7 +150,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TurtleGraphics\TurtleGraphics\TurtleGraphics.csproj">
+    <ProjectReference Include="..\TurtleGraphics\TurtleGraphics.csproj">
       <Project>{0b135496-d427-4b3d-9a89-3e221a32f281}</Project>
       <Name>TurtleGraphics</Name>
     </ProjectReference>
