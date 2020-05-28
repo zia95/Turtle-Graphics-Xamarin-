@@ -8,34 +8,17 @@
              x:Class="TurtleGraphics.MainPage">
 
     <Grid>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="12*" />
         </Grid.RowDefinitions>
 
+        <skia:SKCanvasView x:Name="canvasView" HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand" Grid.Row="0"/>
 
-        <skia:SKCanvasView x:Name="canvasView"/>
-
-
-
-        <ScrollView Grid.Row="1">
-
-            <StackLayout Orientation="Vertical">
-                <Label x:Name="lblInfo" Text="INFO_ABOUT_TURTLE" />
-
-
-                <Entry x:Name="entForwardMovement" Placeholder="Forward Movement" Keyboard="Numeric" />
-                <Button x:Name="btnSetForward" Text="Set Forward" />
-
-                <Entry x:Name="entBackwardMovement" Placeholder="Backward Movement" Keyboard="Numeric"/>
-                <Button x:Name="btnSetBackward" Text="Set Backward" />
-
-                <Entry x:Name="entRotationMovement" Placeholder="Rotation" Keyboard="Numeric"/>
-                <Button x:Name="btnSetRotate" Text="Set Rotate" />
-
-                <Button x:Name="btnResetPos" Text="Reset Postion" />
-            </StackLayout>
-        </ScrollView>
+        <StackLayout Grid.Row="1">
+            <Button x:Name="btnRun" Text="Run" />
+        </StackLayout>
         
     </Grid>
     

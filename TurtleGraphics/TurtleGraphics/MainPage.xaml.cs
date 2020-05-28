@@ -15,65 +15,82 @@ namespace TurtleGraphics
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        private bool doRunTur;
 
-
+        public void InvalidateCanvas()
+        {
+            canvasView.InvalidateSurface();
+        }
         public MainPage()
         {
             InitializeComponent();
 
+            Settings.PageMainInstance = this;
 
             canvasView.PaintSurface += CanvasView_PaintSurface;
 
-            //this.btnMoveForward.Clicked += (s,e) => { this.turtle.Forward(50); this.btnMoveForward.Text = $"Forward: {this.turtle.Position}"; };
-            this.btnSetForward.Clicked += (s, e) => 
+            var __pos = new SKPoint(0, 0);
+            var __pnt = new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = 1f, StrokeCap = SKStrokeCap.Round, Color = Settings.PenColor.Value, IsAntialias = true };
+
+
+            Settings.Turtle = new SkiaTurtleE(__pos, 0, __pnt);
+
+            Settings.Refresh();
+            this.btnRun.Clicked += (s, e) =>
             {
-                turtle.SetForwardDistance(float.Parse(this.entForwardMovement.Text), 2); 
-            };
-            this.btnSetBackward.Clicked += (s, e) =>
-            {
-                turtle.SetBackwardDistance(float.Parse(this.entBackwardMovement.Text), 2);
-            };
+                this.btnRun.IsEnabled = false;
+                if(Settings.Turtle.Bitmap == null)
+                {
+                    var siz = this.canvasView.CanvasSize;
+
+                    Settings.Turtle.Position = new SKPoint(siz.Width / 2, siz.Height / 2);
+                    Settings.Turtle.DefaultPosition = Settings.Turtle.Position;
+                    Settings.Turtle.DefaultAngle = 0;
+
+                    Settings.Turtle.SetupDisplay((int)siz.Width, (int)siz.Height);
 
 
-            this.btnSetRotate.Clicked += (s, e) => 
-            { 
-                this.turtle.Angle = float.Parse(this.entRotationMovement.Text);
-            };
+                    Settings.Refresh(true);
+                    Settings.Turtle.Reset(true);
+                }
+                else
+                {
+                    Settings.Refresh(false);
+                    Settings.Turtle.Reset(false);
+                }
+                
 
-            this.btnResetPos.Clicked += (s, e) =>
-            {
-                this.turtle.Position = tur_org;
-            };
+                
 
-            Device.StartTimer(TimeSpan.FromSeconds(1f / 60), () => { canvasView.InvalidateSurface(); return true; });
+                Settings.Turtle.Commands = Settings.PageCommandsInstance.ListCommands.ToList();
+
+                this.doRunTur = true;
+
+            };
         }
 
-        SkiaTurtle turtle = null;
-        SKPoint tur_org = SKPoint.Empty;
+        
         private void CanvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             SKSurface surface = e.Surface;
             SKCanvas canvas = surface.Canvas;
 
-            canvas.Clear(SKColors.CornflowerBlue);
+            canvas.Clear(Settings.CanvasColor ?? SKColors.Green);
 
-
-
-            if(turtle == null)
+            if(this.doRunTur)
             {
-                tur_org = new SKPoint(e.Info.Width / 2, e.Info.Height / 2);
-                turtle = new SkiaTurtle(tur_org, 0,
-            new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = 2f, StrokeCap = SKStrokeCap.Round, Color = SKColors.Red, IsAntialias = true },
-            new SKBitmap(e.Info.Width, e.Info.Height));
+                if (!Settings.Turtle.RunCommands())
+                {
+                    this.btnRun.IsEnabled = true;
+                    this.doRunTur = false;
+                }
+                    
 
-                turtle.Canvas.Clear(SKColors.Black);
+                
             }
 
-
-            this.lblInfo.Text = $"Position: {this.turtle.Position}; Rotation: {this.turtle.Angle};\nDistanceToCover: {turtle.RemainingDistance}; Steps: {turtle.DistanceSteps};";
-
-            turtle.DoMovement();
-            canvas.DrawBitmap(turtle.Bitmap, 0, 0);
+            if(Settings.Turtle.Bitmap != null)
+                canvas.DrawBitmap(Settings.Turtle.Bitmap, 0, 0);
 
         }
     }

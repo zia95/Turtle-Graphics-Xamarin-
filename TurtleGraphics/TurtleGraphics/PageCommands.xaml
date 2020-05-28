@@ -7,7 +7,7 @@
              x:Class="TurtleGraphics.PageCommands">
 
     <StackLayout>
-        <ListView x:Name="MyListView"
+        <ListView x:Name="lstCommands"
             ItemsSource="{Binding Items}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">

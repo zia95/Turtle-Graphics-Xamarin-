@@ -4,12 +4,24 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:TurtleGraphics;assembly=TurtleGraphics"
              x:Class="TurtleGraphics.PageSettings">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is settings page..."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        
+        <StackLayout Margin="10">
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Set Turtle:" />
+                <Image x:Name="img0" />
+                <Image x:Name="img1" />
+                <Image x:Name="img2" />
+                <Image x:Name="img3" />
+                <Image x:Name="img4" />
+                <Image x:Name="img5" />
+                <Image x:Name="img6" />
+                <Image x:Name="img7" />
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

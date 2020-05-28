@@ -17,29 +17,43 @@ namespace TurtleGraphics
 
         public SKPoint Position { get; set; }
 
+        public SKPoint DefaultPosition { get; set; }
+        public float DefaultAngle { get; set; }
 
         private float ang = 0;
         public float Angle { get { return ang; } set { ang = value % 360; } }
 
+        public bool PenUp { get; set; }
 
         public float RemainingDistance { get; set; }
         public int DistanceSteps { get; set; }
 
-        public SkiaTurtle(SKPoint pos, float ang, SKPaint pnt, SKBitmap bmp)
+        public SkiaTurtle(SKPoint pos, float ang, SKPaint pnt)
         {
             this.Position = pos;
+            this.DefaultPosition = this.Position;
             this.Angle = ang;
+            this.DefaultAngle = this.Angle;
             this.Paint = pnt;
-            this.Bitmap = bmp;
+            
+        }
+
+        public void SetupDisplay(int width, int height, SKColor? clear_color = null)
+        {
+            this.Bitmap = (this.Bitmap == null) ? new SKBitmap(width, height) : this.Bitmap.Resize(new SKSizeI(width, height), SKFilterQuality.High);
 
             this.Canvas = new SKCanvas(this.Bitmap);
+
+            if(clear_color.HasValue)
+                this.Canvas.Clear(clear_color.Value);
         }
 
         public void Forward(float distance)
         {
             SKPoint newpt = this.calc_forward(distance);
 
-            this.Canvas.DrawLine(this.Position, newpt, this.Paint);
+            if(!this.PenUp) 
+                this.Canvas.DrawLine(this.Position, newpt, this.Paint);
             this.Position = newpt;
         }
 
