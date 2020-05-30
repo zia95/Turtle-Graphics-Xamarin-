@@ -9,7 +9,6 @@ namespace TurtleGraphics
         public App()
         {
             InitializeComponent();
-
             //MainPage = new MainPage();
             this.MainPage = new PagesNavigation();
         }

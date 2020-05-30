@@ -129,5 +129,25 @@ namespace TurtleGraphics {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Lobster_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Lobster_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Pixeled {
+            get {
+                object obj = ResourceManager.GetObject("Pixeled", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

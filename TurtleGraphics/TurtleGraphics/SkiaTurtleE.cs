@@ -49,7 +49,7 @@ namespace TurtleGraphics
             public override string ToString()
             {
                 if (this.Amount > 0)
-                    return $"{this.Command} -> {this.Amount}";
+                    return $"{this.Command} {this.Amount}";
                 else
                     return $"{this.Command}";
             }

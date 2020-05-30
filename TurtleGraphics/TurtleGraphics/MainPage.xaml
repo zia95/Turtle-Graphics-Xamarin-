@@ -7,18 +7,35 @@
              mc:Ignorable="d"
              x:Class="TurtleGraphics.MainPage">
 
-    <Grid>
+    <Grid ColumnSpacing="0" RowSpacing="0">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="12*" />
         </Grid.RowDefinitions>
 
         <skia:SKCanvasView x:Name="canvasView" HorizontalOptions="FillAndExpand"
-                           VerticalOptions="FillAndExpand" Grid.Row="0"/>
+                           VerticalOptions="FillAndExpand" Grid.Row="0"
+                           BackgroundColor="Black" />
 
-        <StackLayout Grid.Row="1">
-            <Button x:Name="btnRun" Text="Run" />
+        <StackLayout Orientation="Horizontal" Grid.Row="1" Spacing="0">
+            
+            <Button x:Name="btnRun" Text="Run" 
+                BorderWidth="0"
+                Padding="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    FontFamily="Pixeled"
+                    />
+            <Button x:Name="btnReset" Text="Reset" 
+                BorderWidth="0"
+                Padding="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    FontFamily="Pixeled"
+                    />
         </StackLayout>
+        
+        
         
     </Grid>
     

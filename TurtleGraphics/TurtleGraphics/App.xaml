@@ -4,8 +4,46 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:TurtleGraphics;assembly:TurtleGrapics;"
              x:Class="TurtleGraphics.App">
     <Application.Resources>
 
+        <ResourceDictionary Source="ThemeDark.xaml" />
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource TertiaryTextColor}" />
+            <Setter Property="FontFamily" Value="Pixeled" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+
+        <Style TargetType="Page">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource PageBackgroundColor}" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="FontFamily" Value="Pixeled" />
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+        </Style>
+
+
+        <Style TargetType="Slider" x:Key="sld">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="ThumbColor" Value="{StaticResource SecondaryColor}" />
+            <Setter Property="MaximumTrackColor" Value="{StaticResource SecondaryColor}" />
+            <Setter Property="MinimumTrackColor" Value="{StaticResource SecondaryColor}" />
+        </Style>
+
+        <Style TargetType="local:ISlider" BasedOn="{StaticResource sld}">
+        </Style>
+
+
+        <Style TargetType="StackLayout">
+            <Setter Property="Spacing" Value="0"/>
+        </Style>
     </Application.Resources>
 </Application>

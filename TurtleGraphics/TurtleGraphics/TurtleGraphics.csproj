@@ -11,6 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="graphics\fonts\Lobster-Regular.ttf" />
+    <None Remove="graphics\fonts\Pixeled.ttf" />
     <None Remove="graphics\turtle\1.png" />
     <None Remove="graphics\turtle\2.png" />
     <None Remove="graphics\turtle\3.png" />
@@ -21,6 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="graphics\fonts\Lobster-Regular.ttf" />
+    <EmbeddedResource Include="graphics\fonts\Pixeled.ttf" />
     <EmbeddedResource Include="graphics\turtle\1.png" />
     <EmbeddedResource Include="graphics\turtle\2.png" />
     <EmbeddedResource Include="graphics\turtle\3.png" />
@@ -46,6 +50,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="ColorARGB.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ISlider.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="PageCommands.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -58,6 +68,9 @@
     <EmbeddedResource Update="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ThemeDark.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using System.Reflection;
 
 namespace TurtleGraphics
 {
@@ -26,16 +27,17 @@ namespace TurtleGraphics
             InitializeComponent();
 
             Settings.PageMainInstance = this;
-
+            
             canvasView.PaintSurface += CanvasView_PaintSurface;
 
             var __pos = new SKPoint(0, 0);
             var __pnt = new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = 1f, StrokeCap = SKStrokeCap.Round, Color = Settings.PenColor.Value, IsAntialias = true };
 
-
             Settings.Turtle = new SkiaTurtleE(__pos, 0, __pnt);
 
-            Settings.Refresh();
+
+            //this.BtnReset_Clicked(this, EventArgs.Empty);
+
             this.btnRun.Clicked += (s, e) =>
             {
                 this.btnRun.IsEnabled = false;
@@ -58,18 +60,57 @@ namespace TurtleGraphics
                     Settings.Refresh(false);
                     Settings.Turtle.Reset(false);
                 }
-                
 
-                
+                _turtle = Settings.TurtleSKBitmap[3];
+
 
                 Settings.Turtle.Commands = Settings.PageCommandsInstance.ListCommands.ToList();
 
                 this.doRunTur = true;
 
             };
+            this.btnReset.Clicked += BtnReset_Clicked;
         }
 
-        
+        private void BtnReset_Clicked(object sender, EventArgs e)
+        {
+            var __pos = new SKPoint(0, 0);
+            var __pnt = new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = Settings.PenSize, StrokeCap = SKStrokeCap.Round, Color = Settings.PenColor.Value, IsAntialias = true };
+
+
+            Settings.Turtle = new SkiaTurtleE(__pos, 0, __pnt);
+
+            var siz = this.canvasView.CanvasSize;
+
+            Settings.Turtle.Position = new SKPoint(siz.Width / 2, siz.Height / 2);
+            Settings.Turtle.DefaultPosition = Settings.Turtle.Position;
+            Settings.Turtle.DefaultAngle = 0;
+
+            Settings.Turtle.SetupDisplay((int)siz.Width, (int)siz.Height);
+
+
+            Settings.Refresh(true);
+            Settings.Turtle.Reset(true);
+        }
+
+        private SKBitmap _turtle;
+        private float last_deg = 0;
+        public SKBitmap RotateBitmap(SKBitmap bitmap, float degrees)
+        {
+            if (degrees == last_deg) return bitmap;
+            last_deg = degrees;
+            var rotated = new SKBitmap(bitmap.Height, bitmap.Width);
+
+            using (var surface = new SKCanvas(rotated))
+            {
+                //surface.Translate(rotated.Width, 0);
+                surface.RotateDegrees(degrees);
+                surface.DrawBitmap(bitmap, 0, 0);
+            }
+
+            return rotated;
+        }
+
         private void CanvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             SKSurface surface = e.Surface;
@@ -84,13 +125,15 @@ namespace TurtleGraphics
                     this.btnRun.IsEnabled = true;
                     this.doRunTur = false;
                 }
-                    
-
-                
             }
 
             if(Settings.Turtle.Bitmap != null)
+            {
                 canvas.DrawBitmap(Settings.Turtle.Bitmap, 0, 0);
+                //_turtle = RotateBitmap(_turtle, Settings.Turtle.Angle);
+
+                //canvas.DrawBitmap(_turtle, Settings.Turtle.Position - new SKPoint(_turtle.Width/2, _turtle.Height/2));
+            }
 
         }
     }
