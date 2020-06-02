@@ -23,6 +23,8 @@
 
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="CornerRadius" Value="0" />
+            
             <Setter Property="FontFamily" Value="Pixeled" />
         </Style>
 
@@ -39,6 +41,10 @@
         </Style>
 
         <Style TargetType="local:ISlider" BasedOn="{StaticResource sld}">
+        </Style>
+
+        <Style TargetType="Stepper">
+            
         </Style>
 
 

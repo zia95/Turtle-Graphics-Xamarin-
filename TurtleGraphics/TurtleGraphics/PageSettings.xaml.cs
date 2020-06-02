@@ -60,41 +60,34 @@ namespace TurtleGraphics
 
             if(Settings.TurtleSpeed == 0)
             {
-                this.chkTurtleSpeed.IsChecked = false;
-                this.isldTurtleSpeed.Value = 0;
+                this.tstpTurtleSpeed.Value = 0;
             }
             else
             {
-                this.chkTurtleSpeed.IsChecked = true;
-                this.isldTurtleSpeed.Value = (Settings.TurtleSpeed / 10) - 1;
+                this.tstpTurtleSpeed.Value = ((int)Settings.TurtleSpeed / 10) - 1;
             }
 
-            this.stpLineSize.Value = Settings.PenSize;
+            this.tstpLineSize.Value = (int)Settings.PenSize;
 
 
             this.clrBackground.Color = Settings.CanvasColor.Value;
             this.clrLine.Color = Settings.PenColor.Value;
 
-            this.isldTurtleSpeed.ValueChanged += (s, e) =>
+            
+            this.tstpTurtleSpeed.ValueChanged += (s, e) =>
             {
-                Settings.TurtleSpeed = this.isldTurtleSpeed.IsEnabled ? (float)Math.Round((this.isldTurtleSpeed.Value + 1) * 10) : 0.0f;
+                var spd_val = (this.tstpTurtleSpeed.Value + 1) * 10;
+
+                Settings.TurtleSpeed = (spd_val <= 60) ? spd_val : 0.0f;
 
                 SetPropertly(S_KEY_TURTLE_SPEED, Settings.TurtleSpeed.ToString());
 
                 Settings.Refresh(false);
             };
-            this.chkTurtleSpeed.CheckedChanged += (s, e) =>
+            
+            this.tstpLineSize.ValueChanged += (s, e) =>
             {
-                Settings.TurtleSpeed = 0.0f;
-
-                SetPropertly(S_KEY_TURTLE_SPEED, Settings.TurtleSpeed.ToString());
-
-                Settings.Refresh(false);
-            };
-
-            this.stpLineSize.ValueChanged += (s, e) =>
-            {
-                Settings.PenSize = (int)this.stpLineSize.Value;
+                Settings.PenSize = this.tstpLineSize.Value;
 
                 SetPropertly(S_KEY_LINE_SIZE, Settings.PenSize.ToString());
             };
@@ -114,7 +107,7 @@ namespace TurtleGraphics
                 SetPropertly(S_KEY_LINE_COLOR, Settings.PenColor.ToString());
 
 
-                Settings.Refresh(false);
+                Settings.Refresh(true);
             };
         }
     }

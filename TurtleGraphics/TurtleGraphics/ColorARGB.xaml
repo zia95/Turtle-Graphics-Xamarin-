@@ -7,75 +7,81 @@
              xmlns:local="clr-namespace:TurtleGraphics;assembly=TurtleGraphics"
              x:Class="TurtleGraphics.ColorARGB"
              BackgroundColor="Black">
-  <ContentView.Content>
-      
-      <Grid>
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <local:DoubleToIntConverter x:Key="doubleToInt" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    <ContentView.Content>
+
+        <Grid Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*" />
-            </Grid.ColumnDefinitions>
-            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Grid.Column="0">
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto"/>
+              <!-- 
+              <ColumnDefinition Width="3*"/> 
+              -->
+          </Grid.ColumnDefinitions>
 
-                <!-- COLOR A-->
-
-                <StackLayout x:Name="stkColorA" Orientation="Horizontal">
-                    <Label Text="A"/>
-                    <local:ISlider
-                        x:Name="isldColorA" 
-                                Minimum="0" Maximum="255"
-                                Value="255" Step="1"
-                                HorizontalOptions="FillAndExpand"
-                    />
-
-                    <Label BindingContext="{x:Reference isldColorA}" 
-                        Text="{Binding Value}"/>
-                </StackLayout>
+         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
 
-
-                <!-- COLOR R-->
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="R"/>
-                    <local:ISlider
+            <!-- COLOR R-->
+            <Label Text="R" BindingContext="{x:Reference isldColorR}" IsVisible="{Binding IsVisible}" Grid.Column="0" Grid.Row="0"/>
+            <local:ISlider
                         x:Name="isldColorR" 
                                 Minimum="0" Maximum="255"
                                 Value="255" Step="1"
-                                HorizontalOptions="FillAndExpand"
-                    />
+                                HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="0"/>
 
-                    <Label BindingContext="{x:Reference isldColorR}" 
-                        Text="{Binding Value}"/>
-                </StackLayout>
-                <!-- COLOR G-->
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="G"/>
-                    <local:ISlider
+            <Label BindingContext="{x:Reference isldColorR}" IsVisible="{Binding IsVisible}"
+                        Text="{Binding Value, Converter={StaticResource doubleToInt}, StringFormat='{0:D3}'}" Grid.Column="2" Grid.Row="0"/>
+
+            <!-- COLOR G-->
+            <Label Text="G" BindingContext="{x:Reference isldColorG}" IsVisible="{Binding IsVisible}" Grid.Column="0" Grid.Row="1"/>
+            <local:ISlider
                         x:Name="isldColorG" 
                                 Minimum="0" Maximum="255"
                                 Value="255" Step="1"
-                                HorizontalOptions="FillAndExpand"
-                    />
+                                HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="1"/>
 
-                    <Label BindingContext="{x:Reference isldColorG}" 
-                        Text="{Binding Value}"/>
-                </StackLayout>
-                <!-- COLOR B-->
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="B"/>
-                    <local:ISlider
+            <Label BindingContext="{x:Reference isldColorG}" IsVisible="{Binding IsVisible}"
+                        Text="{Binding Value, Converter={StaticResource doubleToInt}, StringFormat='{0:D3}'}" Grid.Column="2" Grid.Row="1"/>
+            <!-- COLOR B-->
+            <Label Text="B" BindingContext="{x:Reference isldColorB}" IsVisible="{Binding IsVisible}" Grid.Column="0" Grid.Row="2"/>
+            <local:ISlider
                         x:Name="isldColorB" 
                                 Minimum="0" Maximum="255"
                                 Value="255" Step="1"
-                                HorizontalOptions="FillAndExpand"
-                    />
+                                HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="2"/>
 
-                    <Label BindingContext="{x:Reference isldColorB}" 
-                        Text="{Binding Value}"/>
-                </StackLayout>
+            <Label BindingContext="{x:Reference isldColorB}" IsVisible="{Binding IsVisible}"
+                        Text="{Binding Value, Converter={StaticResource doubleToInt}, StringFormat='{0:D3}'}" Grid.Column="2" Grid.Row="2"/>
 
-            </StackLayout>
-            
-          
-          <Image x:Name="imgColor" BackgroundColor="Red" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1"/>
+            <!-- COLOR A-->
+
+            <Label Text="A" BindingContext="{x:Reference isldColorA}" IsVisible="{Binding IsVisible}" Grid.Column="0" Grid.Row="3"/>
+            <local:ISlider
+                        x:Name="isldColorA" 
+                                Minimum="0" Maximum="255"
+                                Value="255" Step="1"
+                                HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="3"/>
+
+            <Label BindingContext="{x:Reference isldColorA}" IsVisible="{Binding IsVisible}"
+                        Text="{Binding Value, Converter={StaticResource doubleToInt}, StringFormat='{0:D3}'}" Grid.Column="2" Grid.Row="3" />
+
+
+            <!--
+            <Image x:Name="imgColor" BackgroundColor="Red" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"/>
+          -->
 
         </Grid>
       

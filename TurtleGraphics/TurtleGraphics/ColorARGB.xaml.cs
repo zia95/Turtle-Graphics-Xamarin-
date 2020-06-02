@@ -10,11 +10,14 @@ using Xamarin.Forms.Xaml;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 
+
 namespace TurtleGraphics
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ColorARGB : ContentView
     {
+        
+
         public static readonly BindableProperty ShowAlphaProperty = BindableProperty.Create("ShowAlpha", typeof(bool), typeof(ColorARGB), default(bool));
         //public static readonly BindableProperty ColorProperty = BindableProperty.Create("Color", typeof(Color), typeof(ColorARGB), default(Color));
         public bool ShowAlpha 
@@ -25,7 +28,7 @@ namespace TurtleGraphics
             } 
             set 
             { 
-                this.stkColorA.IsVisible = value; 
+                this.isldColorA.IsVisible = value; 
                 this.SetValue(ShowAlphaProperty, value); 
             } 
         }
@@ -34,7 +37,7 @@ namespace TurtleGraphics
         {
             get
             {
-                if (this.ShowAlpha)
+                if (!this.ShowAlpha)
                     this.isldColorA.Value = 255;
 
                 return (byte)this.isldColorA.Value;
@@ -99,7 +102,7 @@ namespace TurtleGraphics
         {
             InitializeComponent();
             
-            this.stkColorA.SetBinding(StackLayout.IsVisibleProperty, new Binding("ShowAlpha", source: this));
+            this.isldColorA.SetBinding(StackLayout.IsVisibleProperty, new Binding("ShowAlpha", source: this));
             
             /*
             this.imgColor.SetBinding(Image.BackgroundColorProperty, new Binding("Color", source: this));
@@ -112,7 +115,7 @@ namespace TurtleGraphics
             };
             */
 
-            this.imgColor.BackgroundColor = this.Color.ToFormsColor();
+            this.BackgroundColor = this.Color.ToFormsColor();
 
             this.isldColorA.ValueChanged += IsldColor_ValueChanged;
             this.isldColorR.ValueChanged += IsldColor_ValueChanged;
@@ -122,7 +125,7 @@ namespace TurtleGraphics
 
         private void IsldColor_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            this.imgColor.BackgroundColor = this.Color.ToFormsColor();
+            this.BackgroundColor = this.Color.ToFormsColor();
             this.ValueChanged?.Invoke(this, EventArgs.Empty);
         }
     }

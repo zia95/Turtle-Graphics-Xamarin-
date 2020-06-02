@@ -14,29 +14,13 @@
 
                 <Label Text="Settings" />
 
-                <StackLayout Orientation="Horizontal">
+                <Label Text="Turtle Speed" />
+                <local:TGStepper x:Name="tstpTurtleSpeed" Min="1" Max="6" Value="6" />
 
-                    <Label Text="Turtle Speed" />
+                <Label Text="Line Size" />
+                <local:TGStepper x:Name="tstpLineSize" Min="1" Max="6" Value="6" />
 
-                    <CheckBox x:Name="chkTurtleSpeed" IsChecked="True" VerticalOptions="CenterAndExpand" />
-
-                    <local:ISlider BindingContext="{x:Reference chkTurtleSpeed}" 
-                        x:Name="isldTurtleSpeed" 
-                               Minimum="0" Maximum="5"
-                               Value="3" Step="1"
-                               HorizontalOptions="FillAndExpand"
-                               IsEnabled="{Binding IsChecked}"/>
-
-                    <Label BindingContext="{x:Reference isldTurtleSpeed}" 
-                       Text="{Binding Value}" VerticalOptions="CenterAndExpand"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-
-                    <Label Text="Line Size" VerticalOptions="CenterAndExpand" />
-                    <Stepper x:Name="stpLineSize" Minimum="1" Maximum="5" Increment="1" />
-                    <Label BindingContext="{x:Reference stpLineSize}" Text="{Binding Value}" VerticalOptions="CenterAndExpand"/>
-                </StackLayout>
-
+                
                 <Label Text="Background Color" />
                 <local:ColorARGB x:Name="clrBackground" 
                              ShowAlpha="False" HorizontalOptions="FillAndExpand" />
