@@ -111,14 +111,16 @@ namespace TurtleGraphics
             return rotated;
         }
 
+        SKPaint txt_pen = new SKPaint() { Color = SKColors.White, Style = SKPaintStyle.Fill, TextAlign = SKTextAlign.Center, TextSize = 64.0f };
         private void CanvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             SKSurface surface = e.Surface;
             SKCanvas canvas = surface.Canvas;
 
-            canvas.Clear(Settings.CanvasColor ?? SKColors.Green);
-
-            if(this.doRunTur)
+            canvas.Clear(SKColors.Black);
+            canvas.DrawText("<< Commands", e.Info.Width / 2.0f, e.Info.Height / 2.0f, txt_pen);
+            canvas.DrawText("   Settings >>", e.Info.Width / 2.0f, e.Info.Height / 3.0f, txt_pen);
+            if (this.doRunTur)
             {
                 if (!Settings.Turtle.RunCommands())
                 {

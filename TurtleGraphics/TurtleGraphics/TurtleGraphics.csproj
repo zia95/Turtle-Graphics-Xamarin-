@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -20,6 +20,8 @@
     <None Remove="graphics\turtle\5.png" />
     <None Remove="graphics\turtle\6.png" />
     <None Remove="graphics\turtle\7.png" />
+    <None Remove="sounds\seq_invalid.wav" />
+    <None Remove="TODO.TXT" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,11 +34,17 @@
     <EmbeddedResource Include="graphics\turtle\5.png" />
     <EmbeddedResource Include="graphics\turtle\6.png" />
     <EmbeddedResource Include="graphics\turtle\7.png" />
+    <EmbeddedResource Include="sounds\seq_invalid.wav" />
+    <EmbeddedResource Include="TODO.TXT">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="SkiaSharp" Version="1.68.3" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.3" />
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
@@ -63,6 +71,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PagesNavigation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PageTGScript.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resource.resx">

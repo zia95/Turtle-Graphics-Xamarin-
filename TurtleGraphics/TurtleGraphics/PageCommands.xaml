@@ -10,13 +10,14 @@
     
     <StackLayout>
         <ListView x:Name="lstCommands"
-            ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
             
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding .}"/>
+                        <Label Text="{Binding .}"
+                               HorizontalOptions="CenterAndExpand" 
+                               HorizontalTextAlignment="Center" />
                     </ViewCell>
                     
                 </DataTemplate>

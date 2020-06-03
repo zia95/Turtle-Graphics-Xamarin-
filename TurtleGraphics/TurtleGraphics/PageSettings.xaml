@@ -22,6 +22,7 @@
 
                 
                 <Label Text="Background Color" />
+                <Label Text="(Reset Required)" />
                 <local:ColorARGB x:Name="clrBackground" 
                              ShowAlpha="False" HorizontalOptions="FillAndExpand" />
 
@@ -30,6 +31,9 @@
                 <local:ColorARGB x:Name="clrLine" 
                              ShowAlpha="True" HorizontalOptions="FillAndExpand" />
 
+
+
+                <Button x:Name="btnContact" Text="Contact/Report" />
                 <!--
             
             

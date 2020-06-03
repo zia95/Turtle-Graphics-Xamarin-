@@ -1,0 +1,22 @@
+﻿-----------------------------------------------------------------
++ TODOs                                                         
+-----------------------------------------------------------------
+1) Remove, move not working because wrong index return. Need ID??
+2) Button to clear command List
+3)
+
+Style:
+1) Style need some work
+
+TGScript:
+1) More flex
+2) highlighting
+3) show help?
+4) fast complete....??
+
+Main:
+1) Better "list text" and "settings text" look.
+
+
+Fonts:
+1) Consistant font....

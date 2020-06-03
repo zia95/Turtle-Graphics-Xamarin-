@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -8,6 +9,9 @@ using System.IO;
 using Xamarin.Forms;
 
 using SkiaSharp;
+using Xamarin.Forms.Internals;
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace TurtleGraphics
 {
@@ -58,14 +62,14 @@ namespace TurtleGraphics
 
         public static float TurtleSpeed { get; set; } = 0f;
 
-        public static void Refresh(bool canvas_reset_force = false)
+        public static void Refresh(bool canvas_reset = false)
         {
             if(PenColor.HasValue)
             {
                 Turtle.Paint.Color = PenColor.Value;
             }
             
-            if(CanvasColor.HasValue && Turtle.Canvas != null && canvas_reset_force)
+            if(CanvasColor.HasValue && Turtle.Canvas != null && canvas_reset)
             {
                 Turtle.Canvas.Clear(CanvasColor.Value);
             }
@@ -124,6 +128,92 @@ namespace TurtleGraphics
             {
                 yield return ImageSource.FromResource(resId, assembly);
             }
+        }
+
+
+
+        public const string S_KEY_COMMANDS_LIST = "clst";
+
+
+        public static List<ObservableCollection<SkiaTurtleE.CommandInfo>> CommandsListGet()
+        {
+            return (Application.Current.Properties.ContainsKey(S_KEY_COMMANDS_LIST) ? 
+                TGScript.FromJson<List<ObservableCollection<SkiaTurtleE.CommandInfo>>>((string)Application.Current.Properties[S_KEY_COMMANDS_LIST]): null);
+        }
+        public static void CommandsListSet(List<ObservableCollection<SkiaTurtleE.CommandInfo>> cmds_list)
+        {
+            Application.Current.Properties[S_KEY_COMMANDS_LIST] = TGScript.ToJson(cmds_list);
+        }
+        public static void CommandsListSave(ObservableCollection<SkiaTurtleE.CommandInfo> commands, string tag)
+        {
+            if (commands == null || commands.Count <= 0) return;
+
+            if (String.IsNullOrWhiteSpace(tag)) throw new ArgumentException("tag must be a unique identifier.");
+
+            var cmds = CommandsListGet() ?? new List<ObservableCollection<SkiaTurtleE.CommandInfo>>();
+
+            if (tag != null)
+            {
+                //commands.ForEach((c) => { c.Tag = tag; });
+
+                commands = new ObservableCollection<SkiaTurtleE.CommandInfo>(commands.ToList().ConvertAll((x) => { x.Tag = tag; return x; }));
+            }
+
+            cmds.Add(commands);
+
+            CommandsListSet(cmds);
+        }
+        public static bool CommandsListTagIsUnique(string tag)
+        {
+            var cmds = CommandsListGet();
+            if(cmds != null)
+            {
+                foreach(var c in cmds)
+                {
+                    if (c[0].Tag.Equals(tag))
+                        return false;
+                }
+            }
+            return true;
+        }
+
+
+
+
+        public static class Sound
+        {
+            public const string seq_invalid = "TurtleGraphics.sounds.seq_invalid.wav";
+
+
+            public enum SND_ID
+            {
+                SEQ_INVALID,
+            };
+
+            
+            public static string GetSoundById(SND_ID id)
+            {
+                switch(id)
+                {
+                    case SND_ID.SEQ_INVALID: return seq_invalid;
+                }
+                throw new NotSupportedException($"ID:{id}, is not supported.");
+            }
+
+            public static void Play(SND_ID id) => Play(GetSoundById(id));
+            public static void Play(string snd)
+            {
+                var assembly = typeof(App).GetTypeInfo().Assembly;
+                Stream audioStream = assembly.GetManifestResourceStream(snd);
+
+                if(audioStream != null)
+                {
+                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                    player.Load(audioStream);
+                    player.Play();
+                }
+            }
+            
         }
 
     }

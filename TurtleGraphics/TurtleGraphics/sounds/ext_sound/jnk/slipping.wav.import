@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slipping.wav-7d5214b74e503d733ef4da6f5fd87569.sample"
+
+[deps]
+
+source_file="res://sounds/ext_sound/jnk/slipping.wav"
+dest_files=[ "res://.import/slipping.wav-7d5214b74e503d733ef4da6f5fd87569.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

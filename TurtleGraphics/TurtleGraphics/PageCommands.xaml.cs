@@ -15,6 +15,8 @@ namespace TurtleGraphics
     {
         public ObservableCollection<SkiaTurtleE.CommandInfo> ListCommands { get; set; }
 
+
+        private PageTGScript pg_script = null;
         private void add_dummy()
         {
             this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Repeat, Amount = 9 });
@@ -46,11 +48,45 @@ namespace TurtleGraphics
             if(this.ListCommands == null)
                 this.ListCommands = new ObservableCollection<SkiaTurtleE.CommandInfo>();
 
-            lstCommands.ItemsSource = this.ListCommands;
+            this.lstCommands.ItemsSource = this.ListCommands;
 
             Settings.PageCommandsInstance = this;
 
             this.add_dummy();
+
+            this.pg_script = new PageTGScript();
+
+            
+            this.lstCommands.ItemTapped += async (s, e) =>
+            {
+                string cmnd = await DisplayActionSheet($"{e.Item}", "Cancel", null, "Remove", "Move Up", "Move Down");
+
+                if (cmnd == "Remove")
+                {
+                    this.ListCommands.RemoveAt(e.ItemIndex);
+                }
+                else if (cmnd == "Move Up")
+                {
+                    int new_idx = e.ItemIndex - 1;
+                    if (new_idx >= 0)
+                    {
+                        this.ListCommands.Move(e.ItemIndex, new_idx);
+                    }
+                }
+                else if (cmnd == "Move Down")
+                {
+                    int new_idx = e.ItemIndex + 1;
+                    if(new_idx < ListCommands.Count)
+                    {
+                        this.ListCommands.Move(e.ItemIndex, new_idx);
+                    }
+                }
+
+
+                
+
+                lstCommands.SelectedItem = null;
+            };
 
             this.btnAddCommand.Clicked += async (s, e) => 
             {
@@ -61,6 +97,7 @@ namespace TurtleGraphics
                 if (cidx == -1)
                     return;
 
+
                 int amnt = 0;
 
                 if (SkiaTurtleE.DoCommandNeedAmount((SkiaTurtleE.CommandTypes)cidx))
@@ -68,24 +105,59 @@ namespace TurtleGraphics
                     string samnt = await DisplayPromptAsync("Amount", "For How Long?", initialValue: "10", maxLength: 4, keyboard: Keyboard.Numeric);
 
                     if (int.TryParse(samnt, out amnt) == false || amnt <= 0)
+                    {
+                        Settings.Sound.Play(Settings.Sound.SND_ID.SEQ_INVALID);
                         return;
+                    }
                 }
                 else
                     amnt = -1;
 
+
                 this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = (SkiaTurtleE.CommandTypes)cidx, Amount = amnt });
             };
-        }
 
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item == null)
-                return;
+            pg_script.OnResult += (s, e) =>
+            {
+                if (pg_script.Commands == null)
+                    return;
+                this.ListCommands = new ObservableCollection<SkiaTurtleE.CommandInfo>(pg_script.Commands);
+                this.lstCommands.ItemsSource = this.ListCommands;
+            };
+            this.btnFromScript.Clicked += async (s, e) =>
+            {
+                this.pg_script.Commands = this.ListCommands;
+                await Navigation.PushModalAsync(pg_script);
+            };
 
-            await DisplayAlert("Item Tapped", e.Item.ToString(), "OK");
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+            this.btnSaveSheet.Clicked += async (s, e) =>
+            {
+                if (this.ListCommands.Count <= 0)
+                    return;
+
+                string name = await DisplayPromptAsync("Save", "What name you want to assign this list?", placeholder: "List Name", maxLength: 30, keyboard: Keyboard.Text);
+
+                if (String.IsNullOrWhiteSpace(name))
+                    return;
+
+                Settings.CommandsListSave(this.ListCommands, name);
+            };
+            this.btnLoadSheet.Clicked += async (s, e) =>
+            {
+
+                var lst = Settings.CommandsListGet();
+                if (lst == null || lst.Count <= 0)
+                    return;
+
+                var tags = lst.ConvertAll((x) => { return (string)(x[0].Tag ?? "<unnamed>"); });
+
+
+                string cmnd = await DisplayActionSheet("Command List", "Cancel", null, tags.ToArray());
+
+                this.ListCommands = cmnd != "Cancel" ? lst.Find(x => x[0].Tag == cmnd) : this.ListCommands;
+                this.lstCommands.ItemsSource = this.ListCommands;
+            };
         }
     }
 }

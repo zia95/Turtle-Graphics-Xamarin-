@@ -46,6 +46,8 @@ namespace TurtleGraphics
             public CommandTypes Command { get; set; }
             public int Amount { get; set; }
 
+            public string Tag { get; set; }
+
             public override string ToString()
             {
                 if (this.Amount > 0)

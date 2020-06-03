@@ -58,14 +58,7 @@ namespace TurtleGraphics
             Settings.PenColor = xclr_pen.ToSKColor();
 
 
-            if(Settings.TurtleSpeed == 0)
-            {
-                this.tstpTurtleSpeed.Value = 0;
-            }
-            else
-            {
-                this.tstpTurtleSpeed.Value = ((int)Settings.TurtleSpeed / 10) - 1;
-            }
+            this.tstpTurtleSpeed.Value = (Settings.TurtleSpeed == 0) ? 6 : ((int)Settings.TurtleSpeed / 10) - 1;
 
             this.tstpLineSize.Value = (int)Settings.PenSize;
 
@@ -98,7 +91,7 @@ namespace TurtleGraphics
 
                 SetPropertly(S_KEY_BOARD_COLOR, Settings.CanvasColor.ToString());
 
-                Settings.Refresh(true);
+                //Settings.Refresh(true);
             };
             this.clrLine.ValueChanged += (s, e) =>
             {
@@ -107,7 +100,7 @@ namespace TurtleGraphics
                 SetPropertly(S_KEY_LINE_COLOR, Settings.PenColor.ToString());
 
 
-                Settings.Refresh(true);
+                Settings.Refresh(false);
             };
         }
     }
