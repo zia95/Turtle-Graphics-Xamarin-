@@ -33,6 +33,9 @@
 
         <Style TargetType="Entry">
             <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+            <Setter Property="PlaceholderColor" Value="{StaticResource PrimaryTextColor}"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            
         </Style>
 
 
@@ -45,13 +48,10 @@
 
         <Style TargetType="local:ISlider" BasedOn="{StaticResource sld}">
         </Style>
-        
-        <Style TargetType="local:TGStepper" >
-            
-        </Style>
+
 
         <Style TargetType="Stepper">
-            
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
         </Style>
 
 

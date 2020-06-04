@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="lstCommands" CachingStrategy="RecycleElement" Grid.Row="0">
+        <ListView x:Name="lstCommands" CachingStrategy="RecycleElement" Grid.Row="0" Margin="10,0,0,0">
 
             <ListView.ItemTemplate>
                 <DataTemplate>

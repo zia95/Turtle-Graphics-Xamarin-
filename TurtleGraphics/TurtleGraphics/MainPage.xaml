@@ -18,17 +18,13 @@
                            VerticalOptions="FillAndExpand" Grid.Row="0"
                            BackgroundColor="Black" />
 
-        <StackLayout Orientation="Horizontal" Grid.Row="1" Spacing="0">
+        <StackLayout Orientation="Horizontal" Grid.Row="1">
             
-            <Button x:Name="btnRun" Text="Run" 
-                BorderWidth="0"
-                Padding="0"
+            <Button x:Name="btnRun" Text="Run"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     />
-            <Button x:Name="btnReset" Text="Reset" 
-                BorderWidth="0"
-                Padding="0"
+            <Button x:Name="btnReset" Text="Reset"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     />

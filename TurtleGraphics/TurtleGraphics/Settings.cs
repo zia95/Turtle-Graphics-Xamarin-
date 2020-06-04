@@ -17,6 +17,7 @@ namespace TurtleGraphics
 {
     public static class Settings
     {
+        
         public static readonly string[] TurtleImageResourceIds =
             {
             "TurtleGraphics.graphics.turtle.1.png",
