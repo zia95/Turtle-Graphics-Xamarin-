@@ -11,8 +11,7 @@
         <ResourceDictionary Source="ThemeDark.xaml" />
 
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="{StaticResource TertiaryTextColor}" />
-            <Setter Property="FontFamily" Value="Pixeled" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
             <Setter Property="FontSize" Value="15" />
         </Style>
 
@@ -23,24 +22,32 @@
 
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
             <Setter Property="CornerRadius" Value="0" />
-            
-            <Setter Property="FontFamily" Value="Pixeled" />
         </Style>
 
         <Style TargetType="ListView">
-            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
+            <!-- ITEM SELECT COLOR CHANGE......... -->
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
         </Style>
 
 
         <Style TargetType="Slider" x:Key="sld">
-            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
             <Setter Property="ThumbColor" Value="{StaticResource SecondaryColor}" />
             <Setter Property="MaximumTrackColor" Value="{StaticResource SecondaryColor}" />
             <Setter Property="MinimumTrackColor" Value="{StaticResource SecondaryColor}" />
         </Style>
 
         <Style TargetType="local:ISlider" BasedOn="{StaticResource sld}">
+        </Style>
+        
+        <Style TargetType="local:TGStepper" >
+            
         </Style>
 
         <Style TargetType="Stepper">

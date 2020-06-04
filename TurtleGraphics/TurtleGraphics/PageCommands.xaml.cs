@@ -15,40 +15,61 @@ namespace TurtleGraphics
     {
         public ObservableCollection<SkiaTurtleE.CommandInfo> ListCommands { get; set; }
 
+        private int _cmnd_ava_ids = 0;
+        
+        public void LoadCommands()
+        {
+            Settings.Turtle.Commands = Settings.PageCommandsInstance.ListCommands.ToArray();
+        }
+        public void ClearCommands()
+        {
+            ListCommands.Clear();
+            this._cmnd_ava_ids = 0;
+        }
+        public void SetCommandList(IEnumerable<SkiaTurtleE.CommandInfo> commandInfos)
+        {
+            this.ClearCommands();
+            this.AddCommands(commandInfos.ToArray());
+        }
+        public void AddCommands(params SkiaTurtleE.CommandInfo[] cmnds)
+        {
+            for(int i = 0; i < cmnds.Length; i++)
+            {
+                var c = cmnds[i];
+
+                c.ID = this._cmnd_ava_ids;
+                ++this._cmnd_ava_ids;
+                this.ListCommands.Add(c);
+            }
+        }
 
         private PageTGScript pg_script = null;
         private void add_dummy()
         {
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Repeat, Amount = 9 });
-
-
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Repeat, Amount = 4 });
-
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Repeat, Amount = 2 });
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.PenUp, Amount = -1 });
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Forward, Amount = 10 });
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.PenDown, Amount = -1 });
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Forward, Amount = 50 });
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.EndRepeat, Amount = -1 });
-
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Left, Amount = -1 });
-
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.EndRepeat, Amount = -1 });
-
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Rotate, Amount = 40 });
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Forward, Amount = 100 });
-
-
-            this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.EndRepeat, Amount = -1 });
+            this.AddCommands(
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Repeat, Amount = 9 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Repeat, Amount = 4 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Repeat, Amount = 2 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.PenUp, Amount = -1 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Forward, Amount = 10 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.PenDown, Amount = -1 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Forward, Amount = 50 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.EndRepeat, Amount = -1 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Left, Amount = -1 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.EndRepeat, Amount = -1 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Rotate, Amount = 40 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.Forward, Amount = 100 },
+                new SkiaTurtleE.CommandInfo() { Command = SkiaTurtleE.CommandTypes.EndRepeat, Amount = -1 }
+                );
         }
         public PageCommands()
         {
             InitializeComponent();
 
-            if(this.ListCommands == null)
-                this.ListCommands = new ObservableCollection<SkiaTurtleE.CommandInfo>();
-
+            this.ListCommands = new ObservableCollection<SkiaTurtleE.CommandInfo>();
             this.lstCommands.ItemsSource = this.ListCommands;
+
+
 
             Settings.PageCommandsInstance = this;
 
@@ -59,7 +80,7 @@ namespace TurtleGraphics
             
             this.lstCommands.ItemTapped += async (s, e) =>
             {
-                string cmnd = await DisplayActionSheet($"{e.Item}", "Cancel", null, "Remove", "Move Up", "Move Down");
+                string cmnd = await DisplayActionSheet($"[{e.ItemIndex}] {e.Item}", "Cancel", null, "Remove", "Move Up", "Move Down");
 
                 if (cmnd == "Remove")
                 {
@@ -114,15 +135,14 @@ namespace TurtleGraphics
                     amnt = -1;
 
 
-                this.ListCommands.Add(new SkiaTurtleE.CommandInfo() { Command = (SkiaTurtleE.CommandTypes)cidx, Amount = amnt });
+                this.AddCommands(new SkiaTurtleE.CommandInfo() { Command = (SkiaTurtleE.CommandTypes)cidx, Amount = amnt });
             };
 
             pg_script.OnResult += (s, e) =>
             {
                 if (pg_script.Commands == null)
                     return;
-                this.ListCommands = new ObservableCollection<SkiaTurtleE.CommandInfo>(pg_script.Commands);
-                this.lstCommands.ItemsSource = this.ListCommands;
+                this.SetCommandList(pg_script.Commands);
             };
             this.btnFromScript.Clicked += async (s, e) =>
             {
@@ -155,8 +175,10 @@ namespace TurtleGraphics
 
                 string cmnd = await DisplayActionSheet("Command List", "Cancel", null, tags.ToArray());
 
-                this.ListCommands = cmnd != "Cancel" ? lst.Find(x => x[0].Tag == cmnd) : this.ListCommands;
-                this.lstCommands.ItemsSource = this.ListCommands;
+                if(cmnd != "Cancel")
+                {
+                    this.SetCommandList(lst.Find(x => x[0].Tag == cmnd));
+                }
             };
         }
     }

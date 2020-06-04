@@ -43,6 +43,8 @@ namespace TurtleGraphics
 
         public struct CommandInfo
         {
+            public int ID { get; set; }
+
             public CommandTypes Command { get; set; }
             public int Amount { get; set; }
 
@@ -57,7 +59,7 @@ namespace TurtleGraphics
             }
         }
 
-        public List<CommandInfo> Commands { get; set; }
+        public CommandInfo[] Commands { get; set; }
         
         public int CurrentCommandIndex { get; private set; }
 
@@ -95,7 +97,7 @@ namespace TurtleGraphics
         public void Reset(bool clear_commands = false)
         {
             if(clear_commands)
-                this.Commands = new List<CommandInfo>();
+                this.Commands = null;
 
             this.repeats = new List<RepeatInfo>();
             this.CurrentCommandIndex = 0;
@@ -103,10 +105,12 @@ namespace TurtleGraphics
 
         public bool RunCommands()
         {
-            if (this.Commands.Count <= 0) 
+            if (this.Commands == null)
+                return false;
+            if (this.Commands.Length <= 0) 
                 return false;
 
-            if (this.CurrentCommandIndex >= this.Commands.Count) 
+            if (this.CurrentCommandIndex >= this.Commands.Length) 
                 return false;
 
             var curr = this.Commands[this.CurrentCommandIndex];

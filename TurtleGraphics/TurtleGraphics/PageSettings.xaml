@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
 
-            <StackLayout Margin="10">
+            <StackLayout Margin="10" Spacing="10">
 
                 <Label Text="Settings" />
 
@@ -20,9 +20,9 @@
                 <Label Text="Line Size" />
                 <local:TGStepper x:Name="tstpLineSize" Min="1" Max="6" Value="6" />
 
+
+                <Label Text="Background Color (Reset Required)" />
                 
-                <Label Text="Background Color" />
-                <Label Text="(Reset Required)" />
                 <local:ColorARGB x:Name="clrBackground" 
                              ShowAlpha="False" HorizontalOptions="FillAndExpand" />
 

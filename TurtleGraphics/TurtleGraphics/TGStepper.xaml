@@ -4,10 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TurtleGraphics.TGStepper" BackgroundColor="White">
+             x:Class="TurtleGraphics.TGStepper">
   <ContentView.Content>
         <StackLayout Orientation="Horizontal">
-            <Entry x:Name="ent" Keyboard="Numeric" 
+            <Entry x:Name="ent" Keyboard="Numeric" HorizontalTextAlignment="Center"
                    BindingContext="{x:Reference stp}" 
                    Text="{Binding Value,Mode=TwoWay}" 
                     HorizontalOptions="FillAndExpand"/>

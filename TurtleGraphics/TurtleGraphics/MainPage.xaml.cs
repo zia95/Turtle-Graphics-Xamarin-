@@ -64,7 +64,7 @@ namespace TurtleGraphics
                 _turtle = Settings.TurtleSKBitmap[3];
 
 
-                Settings.Turtle.Commands = Settings.PageCommandsInstance.ListCommands.ToList();
+                Settings.PageCommandsInstance.LoadCommands();
 
                 this.doRunTur = true;
 
@@ -111,15 +111,17 @@ namespace TurtleGraphics
             return rotated;
         }
 
-        SKPaint txt_pen = new SKPaint() { Color = SKColors.White, Style = SKPaintStyle.Fill, TextAlign = SKTextAlign.Center, TextSize = 64.0f };
+        SKPaint txt_pen = new SKPaint() { Color = SKColors.White, Style = SKPaintStyle.Fill, TextAlign = SKTextAlign.Right, TextSize = 64.0f };
+        SKPaint txt_pen2 = new SKPaint() { Color = SKColors.White, Style = SKPaintStyle.Fill, TextAlign = SKTextAlign.Left, TextSize = 64.0f };
         private void CanvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             SKSurface surface = e.Surface;
             SKCanvas canvas = surface.Canvas;
 
             canvas.Clear(SKColors.Black);
-            canvas.DrawText("<< Commands", e.Info.Width / 2.0f, e.Info.Height / 2.0f, txt_pen);
-            canvas.DrawText("   Settings >>", e.Info.Width / 2.0f, e.Info.Height / 3.0f, txt_pen);
+            //canvas.DrawText("<= Commands", e.Info.Width / 2.0f, txt_pen.TextSize, txt_pen);
+            //canvas.DrawText("   Settings =>", e.Info.Width / 2.0f, txt_pen.TextSize, txt_pen2);
+            
             if (this.doRunTur)
             {
                 if (!Settings.Turtle.RunCommands())

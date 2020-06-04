@@ -8,27 +8,33 @@
              BackgroundColor="Black">
 
     
-    <StackLayout>
-        <ListView x:Name="lstCommands"
-            CachingStrategy="RecycleElement">
-            
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="lstCommands" CachingStrategy="RecycleElement" Grid.Row="0">
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        
                         <Label Text="{Binding .}"
                                HorizontalOptions="CenterAndExpand" 
-                               HorizontalTextAlignment="Center" />
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Start"/>
                     </ViewCell>
-                    
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" Grid.Row="1">
             <Button x:Name="btnAddCommand" Text="Add" 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"/>
-            
+
             <Button x:Name="btnFromScript" Text="Script" 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"/>
@@ -39,10 +45,7 @@
             <Button x:Name="btnLoadSheet" Text="Load" 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"/>
-            
-
         </StackLayout>
-        
-    </StackLayout>
+    </Grid>
     
 </ContentPage>
