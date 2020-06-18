@@ -151,6 +151,16 @@ namespace TurtleGraphics {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PressStart2P_vaV7 {
+            get {
+                object obj = ResourceManager.GetObject("PressStart2P_vaV7", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream seq_invalid {

@@ -54,27 +54,16 @@ namespace TurtleGraphics
         public static SkiaTurtleE Turtle { get; set; }
 
         public static PageCommands PageCommandsInstance { get; set; }
-        public static MainPage PageMainInstance { get; set; }
+        public static PageMain PageMainInstance { get; set; }
 
         public static float PenSize { get { return Turtle.Paint.StrokeWidth; } set { Turtle.Paint.StrokeWidth = value; } }
-        public static SKColor? PenColor { get; set; } = SKColors.Red;
 
         public static SKColor? CanvasColor { get; set; } = SKColors.Black;
 
         public static float TurtleSpeed { get; set; } = 0f;
 
-        public static void Refresh(bool canvas_reset = false)
+        public static void RefreshSpeed()
         {
-            if(PenColor.HasValue)
-            {
-                Turtle.Paint.Color = PenColor.Value;
-            }
-            
-            if(CanvasColor.HasValue && Turtle.Canvas != null && canvas_reset)
-            {
-                Turtle.Canvas.Clear(CanvasColor.Value);
-            }
-
             if(TurtleSpeed > 0)
             {
                 Turtle.DistanceSteps = 1;
@@ -84,6 +73,13 @@ namespace TurtleGraphics
             {
                 Turtle.DistanceSteps = 0;
                 Device.StartTimer(TimeSpan.FromSeconds(1f / 60f), () => { PageMainInstance.InvalidateCanvas(); return true; });
+            }
+        }
+        public static void RefreshCanvas()
+        {
+            if (CanvasColor.HasValue && Turtle.Canvas != null)
+            {
+                Turtle.Canvas.Clear(CanvasColor.Value);
             }
         }
 
@@ -159,7 +155,7 @@ namespace TurtleGraphics
 
                 commands = new ObservableCollection<SkiaTurtleE.CommandInfo>(commands.ToList().ConvertAll((x) => { x.Tag = tag; return x; }));
             }
-
+            
             cmds.Add(commands);
 
             CommandsListSet(cmds);

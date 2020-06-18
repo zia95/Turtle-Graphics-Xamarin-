@@ -14,7 +14,7 @@ namespace TurtleGraphics
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class PageMain : ContentPage
     {
         private bool doRunTur;
 
@@ -22,7 +22,7 @@ namespace TurtleGraphics
         {
             canvasView.InvalidateSurface();
         }
-        public MainPage()
+        public PageMain()
         {
             InitializeComponent();
 
@@ -31,12 +31,14 @@ namespace TurtleGraphics
             canvasView.PaintSurface += CanvasView_PaintSurface;
 
             var __pos = new SKPoint(0, 0);
-            var __pnt = new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = 1f, StrokeCap = SKStrokeCap.Round, Color = Settings.PenColor.Value, IsAntialias = true };
+            var __pnt = new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = 1f, StrokeCap = SKStrokeCap.Round, Color = SKColors.White, IsAntialias = true };
 
             Settings.Turtle = new SkiaTurtleE(__pos, 0, __pnt);
 
 
             //this.BtnReset_Clicked(this, EventArgs.Empty);
+
+            
 
             this.btnRun.Clicked += (s, e) =>
             {
@@ -52,12 +54,13 @@ namespace TurtleGraphics
                     Settings.Turtle.SetupDisplay((int)siz.Width, (int)siz.Height);
 
 
-                    Settings.Refresh(true);
+                    Settings.RefreshCanvas();
+                    Settings.RefreshSpeed();
                     Settings.Turtle.Reset(true);
                 }
                 else
                 {
-                    Settings.Refresh(false);
+                    Settings.RefreshSpeed();
                     Settings.Turtle.Reset(false);
                 }
 
@@ -75,7 +78,7 @@ namespace TurtleGraphics
         private void BtnReset_Clicked(object sender, EventArgs e)
         {
             var __pos = new SKPoint(0, 0);
-            var __pnt = new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = Settings.PenSize, StrokeCap = SKStrokeCap.Round, Color = Settings.PenColor.Value, IsAntialias = true };
+            var __pnt = new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = Settings.PenSize, StrokeCap = SKStrokeCap.Round, Color = SKColors.White, IsAntialias = true };
 
 
             Settings.Turtle = new SkiaTurtleE(__pos, 0, __pnt);
@@ -89,7 +92,8 @@ namespace TurtleGraphics
             Settings.Turtle.SetupDisplay((int)siz.Width, (int)siz.Height);
 
 
-            Settings.Refresh(true);
+            Settings.RefreshCanvas();
+            Settings.RefreshSpeed();
             Settings.Turtle.Reset(true);
         }
 

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:TurtleGraphics"
+             mc:Ignorable="d"
+             x:Class="TurtleGraphics.AppShell" FlyoutBehavior="Disabled" Shell.NavBarIsVisible="False">
+
+    <!--
+    <FlyoutItem Title="main" Route="main">
+        <ShellContent ContentTemplate="{DataTemplate local:PageMain}" />
+    </FlyoutItem>
+    -->
+    <ShellContent Route="PageMain" ContentTemplate="{DataTemplate local:PageMain}" />
+    <ShellContent Route="PageLogic" ContentTemplate="{DataTemplate local:PageLogic}" />
+    <ShellContent Route="PageSettings" ContentTemplate="{DataTemplate local:PageSettings}" />
+</Shell>

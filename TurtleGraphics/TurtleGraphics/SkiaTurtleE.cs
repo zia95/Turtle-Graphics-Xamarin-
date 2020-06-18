@@ -16,6 +16,7 @@ namespace TurtleGraphics
             Backward,
             Rotate,
             Repeat,
+            PenColor,
             
             
 

@@ -6,34 +6,46 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:TurtleGraphics;assembly=TurtleGraphics"
              x:Class="TurtleGraphics.PageSettings"
-             BackgroundColor="Black">
+             Title="Settings"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+    
     <ContentPage.Content>
         <ScrollView>
+            
+            <Grid>
 
-            <StackLayout Margin="10" Spacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <Label Text="Settings" />
-
-                <Label Text="Turtle Speed" />
-                <local:TGStepper x:Name="tstpTurtleSpeed" Min="1" Max="6" Value="6" />
-
-                <Label Text="Line Size" />
-                <local:TGStepper x:Name="tstpLineSize" Min="1" Max="6" Value="6" />
-
-
-                <Label Text="Background Color (Reset Required)" />
-                
-                <local:ColorARGB x:Name="clrBackground" 
-                             ShowAlpha="False" HorizontalOptions="FillAndExpand" />
+                <local:ViewNavBar Grid.Row="0" CurrentPage="Settings" />
 
 
-                <Label Text="Turtle Line Color" />
-                <local:ColorARGB x:Name="clrLine" 
-                             ShowAlpha="True" HorizontalOptions="FillAndExpand" />
+                <StackLayout Grid.Row="1">
+                    <Label Text="Turtle Speed" />
+                    <local:ViewStepInt x:Name="tstpTurtleSpeed" />
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="2">
+                    <Label Text="Line Size" />
+                    <local:ViewStepInt x:Name="tstpLineSize" />
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="3">
+                    <Label Text="Background Color" />
+                    <local:ViewColorPicker x:Name="clrBackground"/>
+                </StackLayout>
 
 
 
-                <Button x:Name="btnContact" Text="Contact/Report" />
+
+                <Button Grid.Row="4" x:Name="btnContact" Text="Contact/Report" />
                 <!--
             
             
@@ -50,8 +62,10 @@
             </StackLayout>
             -->
 
-            </StackLayout>
-            
+
+
+            </Grid>
+
         </ScrollView>
         
     </ContentPage.Content>

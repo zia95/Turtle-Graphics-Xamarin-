@@ -17,14 +17,13 @@ namespace TurtleGraphics
     {
         public static readonly string S_KEY_TURTLE_SPEED = "tspeed";
         public static readonly string S_KEY_LINE_SIZE = "tpsiz";
-        public static readonly string S_KEY_BOARD_COLOR = "bcolor";
-        public static readonly string S_KEY_LINE_COLOR = "lcolor";
+        public static readonly string S_KEY_BOARD_COLOR = "bcolor_idx";
 
-        public static object GetPropertlyOrDefault(string key, object def)
+        public static string GetPropertlyOrDefault(string key, string def)
         {
-            return Application.Current.Properties.ContainsKey(key) ? Application.Current.Properties[key] : def;
+            return Application.Current.Properties.ContainsKey(key) ? Application.Current.Properties[key].ToString() : def;
         }
-        public static void SetPropertly(string key, object val)
+        public static void SetPropertly(string key, string val)
         {
             Application.Current.Properties[key] = val;
         }
@@ -50,21 +49,18 @@ namespace TurtleGraphics
             this.btnTurtle7.ImageSource = ImageSource.FromResource(Settings.TurtleImageResourceIds[6], typeof(PageSettings).GetTypeInfo().Assembly);
             */
 
-            var xclr_can = Color.FromHex(GetPropertlyOrDefault(S_KEY_BOARD_COLOR, Color.Black.ToHex()) as string);
-            var xclr_pen = Color.FromHex(GetPropertlyOrDefault(S_KEY_LINE_COLOR, Color.Red.ToHex()) as string);
+            this.clrBackground.Selected = int.Parse(GetPropertlyOrDefault(S_KEY_BOARD_COLOR, "0") as string);
+            Settings.CanvasColor = this.clrBackground.Color;
+
+
             Settings.TurtleSpeed = int.Parse(GetPropertlyOrDefault(S_KEY_TURTLE_SPEED, "0") as string);
             Settings.PenSize = int.Parse(GetPropertlyOrDefault(S_KEY_LINE_SIZE, "1") as string);
-            Settings.CanvasColor = xclr_can.ToSKColor();
-            Settings.PenColor = xclr_pen.ToSKColor();
+
+            
 
 
             this.tstpTurtleSpeed.Value = (Settings.TurtleSpeed == 0) ? 6 : ((int)Settings.TurtleSpeed / 10) - 1;
-
             this.tstpLineSize.Value = (int)Settings.PenSize;
-
-
-            this.clrBackground.Color = Settings.CanvasColor.Value;
-            this.clrLine.Color = Settings.PenColor.Value;
 
             
             this.tstpTurtleSpeed.ValueChanged += (s, e) =>
@@ -75,7 +71,8 @@ namespace TurtleGraphics
 
                 SetPropertly(S_KEY_TURTLE_SPEED, Settings.TurtleSpeed.ToString());
 
-                Settings.Refresh(false);
+
+                Settings.RefreshSpeed();
             };
             
             this.tstpLineSize.ValueChanged += (s, e) =>
@@ -85,22 +82,13 @@ namespace TurtleGraphics
                 SetPropertly(S_KEY_LINE_SIZE, Settings.PenSize.ToString());
             };
 
-            this.clrBackground.ValueChanged += (s, e) => 
+            this.clrBackground.SelectionChanged += (s, e) =>
             {
                 Settings.CanvasColor = this.clrBackground.Color;
 
-                SetPropertly(S_KEY_BOARD_COLOR, Settings.CanvasColor.ToString());
+                SetPropertly(S_KEY_BOARD_COLOR, this.clrBackground.Selected.ToString());
 
-                //Settings.Refresh(true);
-            };
-            this.clrLine.ValueChanged += (s, e) =>
-            {
-                Settings.PenColor = this.clrLine.Color;
-
-                SetPropertly(S_KEY_LINE_COLOR, Settings.PenColor.ToString());
-
-
-                Settings.Refresh(false);
+                Settings.RefreshCanvas();
             };
         }
     }

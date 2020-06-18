@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TurtleGraphics.PageCommands"
-             BackgroundColor="Black">
+             BackgroundColor="Black"
+             Title="Logic">
 
     
     <Grid>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:TurtleGraphics"
+             x:Class="TurtleGraphics.PageLogic" Title="Logic"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+    <ContentPage.Content>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <local:ViewNavBar Grid.Row="0" CurrentPage="Logic" />
+
+            <Editor Grid.Row="1" x:Name="edtScript" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Plain"  />
+            <Button Grid.Row="2" x:Name="btnDone" Text="Done" />
+
+            <local:ViewScriptKeyboard Grid.Row="3" />
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

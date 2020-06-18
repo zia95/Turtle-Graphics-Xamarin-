@@ -5,20 +5,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              mc:Ignorable="d"
-             x:Class="TurtleGraphics.MainPage">
+             xmlns:local="clr-namespace:TurtleGraphics"
+             x:Class="TurtleGraphics.PageMain"
+             Title="Main"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
 
-    <Grid ColumnSpacing="0" RowSpacing="0">
+    <Grid>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <local:ViewNavBar Grid.Row="0" CurrentPage="Main"/>
+
+
+
         <skia:SKCanvasView x:Name="canvasView" HorizontalOptions="FillAndExpand"
-                           VerticalOptions="FillAndExpand" Grid.Row="0"
+                           VerticalOptions="FillAndExpand" Grid.Row="1"
                            BackgroundColor="Black" />
 
-        <StackLayout Orientation="Horizontal" Grid.Row="1">
+        <StackLayout Orientation="Horizontal" Grid.Row="2">
             
             <Button x:Name="btnRun" Text="Run"
                     VerticalOptions="FillAndExpand"

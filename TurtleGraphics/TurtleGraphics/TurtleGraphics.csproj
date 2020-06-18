@@ -13,6 +13,7 @@
   <ItemGroup>
     <None Remove="graphics\fonts\Lobster-Regular.ttf" />
     <None Remove="graphics\fonts\Pixeled.ttf" />
+    <None Remove="graphics\fonts\PressStart2P-vaV7.ttf" />
     <None Remove="graphics\turtle\1.png" />
     <None Remove="graphics\turtle\2.png" />
     <None Remove="graphics\turtle\3.png" />
@@ -27,6 +28,7 @@
   <ItemGroup>
     <EmbeddedResource Include="graphics\fonts\Lobster-Regular.ttf" />
     <EmbeddedResource Include="graphics\fonts\Pixeled.ttf" />
+    <EmbeddedResource Include="graphics\fonts\PressStart2P-vaV7.ttf" />
     <EmbeddedResource Include="graphics\turtle\1.png" />
     <EmbeddedResource Include="graphics\turtle\2.png" />
     <EmbeddedResource Include="graphics\turtle\3.png" />
@@ -46,11 +48,14 @@
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="PageMain.xaml.cs">
+      <DependentUpon>PageMain.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Resource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -59,19 +64,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ColorARGB.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ISlider.xaml">
+    <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PageCommands.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="PageLogic.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="PageSettings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PagesNavigation.xaml">
+    <EmbeddedResource Update="PageTabbedNavigation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PageTGScript.xaml">
@@ -81,10 +86,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="TGStepper.xaml">
+    <EmbeddedResource Update="ThemeDark.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ThemeDark.xaml">
+    <EmbeddedResource Update="ViewColorPicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ViewNavBar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ViewScriptKeyboard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ViewStepInt.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

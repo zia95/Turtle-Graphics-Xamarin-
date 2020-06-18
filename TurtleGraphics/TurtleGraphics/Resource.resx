@@ -124,6 +124,9 @@
   <data name="Pixeled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>graphics\fonts\Pixeled.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="PressStart2P_vaV7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>graphics\fonts\PressStart2P-vaV7.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="seq_invalid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>sounds\seq_invalid.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

@@ -9,8 +9,8 @@ namespace TurtleGraphics
         public App()
         {
             InitializeComponent();
-            //MainPage = new MainPage();
-            this.MainPage = new PagesNavigation();
+            //this.MainPage = new PageMain();
+            this.MainPage = new AppShell();
         }
 
         protected override void OnStart()

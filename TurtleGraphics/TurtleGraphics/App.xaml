@@ -13,17 +13,19 @@
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
             <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontFamily" Value="PressStart2P" />
         </Style>
 
-        <Style TargetType="Page">
+        <Style TargetType="ContentPage">
             <Setter Property="BackgroundColor"
                     Value="{StaticResource PageBackgroundColor}" />
         </Style>
 
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
-            <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+            <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
             <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="FontFamily" Value="PressStart2P" />
         </Style>
 
         <Style TargetType="ListView">
@@ -37,6 +39,12 @@
             <Setter Property="BackgroundColor" Value="Transparent"/>
             
         </Style>
+        <Style TargetType="Editor">
+            <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+            <Setter Property="PlaceholderColor" Value="{StaticResource PrimaryTextColor}"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+
+        </Style>
 
 
         <Style TargetType="Slider" x:Key="sld">
@@ -44,9 +52,6 @@
             <Setter Property="ThumbColor" Value="{StaticResource SecondaryColor}" />
             <Setter Property="MaximumTrackColor" Value="{StaticResource SecondaryColor}" />
             <Setter Property="MinimumTrackColor" Value="{StaticResource SecondaryColor}" />
-        </Style>
-
-        <Style TargetType="local:ISlider" BasedOn="{StaticResource sld}">
         </Style>
 
 

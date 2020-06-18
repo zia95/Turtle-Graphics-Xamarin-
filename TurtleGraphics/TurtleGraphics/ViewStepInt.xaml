@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TurtleGraphics.ViewStepInt">
+  <ContentView.Content>
+        <Grid>
+            <Button x:Name="btnL" Grid.Column="0" Text="&lt;"/>
+            <Button x:Name="btn1" Grid.Column="1" Text="1"/>
+            <Button x:Name="btn2" Grid.Column="2" Text="2"/>
+            <Button x:Name="btn3" Grid.Column="3" Text="3"/>
+            <Button x:Name="btn4" Grid.Column="4" Text="4"/>
+            <Button x:Name="btn5" Grid.Column="5" Text="5"/>
+            <Button x:Name="btn6" Grid.Column="6" Text="6"/>
+            <Button x:Name="btnG" Grid.Column="7" Text="&gt;" />
+        </Grid>
+  </ContentView.Content>
+</ContentView>
