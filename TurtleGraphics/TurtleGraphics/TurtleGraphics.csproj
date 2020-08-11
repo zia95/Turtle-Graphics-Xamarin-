@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="PageMain.xaml.cs">
+    <Compile Update="Pages\PageMain.xaml.cs">
       <DependentUpon>PageMain.xaml</DependentUpon>
     </Compile>
     <Compile Update="Resource.Designer.cs">
@@ -67,19 +67,19 @@
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PageCommands.xaml">
+    <EmbeddedResource Update="Pages\PageCommands.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PageLogic.xaml">
+    <EmbeddedResource Update="Pages\PageLogic.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PageSettings.xaml">
+    <EmbeddedResource Update="Pages\PageSettings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PageTabbedNavigation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PageTGScript.xaml">
+    <EmbeddedResource Update="Pages\PageTGScript.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resource.resx">
@@ -89,16 +89,16 @@
     <EmbeddedResource Update="ThemeDark.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ViewColorPicker.xaml">
+    <EmbeddedResource Update="Views\ViewColorPicker.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ViewNavBar.xaml">
+    <EmbeddedResource Update="Views\ViewNavBar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ViewScriptKeyboard.xaml">
+    <EmbeddedResource Update="Views\ViewScriptKeyboard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ViewStepInt.xaml">
+    <EmbeddedResource Update="Views\ViewStepInt.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

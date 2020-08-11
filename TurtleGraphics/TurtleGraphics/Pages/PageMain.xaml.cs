@@ -80,6 +80,8 @@ namespace TurtleGraphics
             var __pos = new SKPoint(0, 0);
             var __pnt = new SKPaint() { Style = SKPaintStyle.StrokeAndFill, StrokeWidth = Settings.PenSize, StrokeCap = SKStrokeCap.Round, Color = SKColors.White, IsAntialias = true };
 
+            
+
 
             Settings.Turtle = new SkiaTurtleE(__pos, 0, __pnt);
 
@@ -122,10 +124,23 @@ namespace TurtleGraphics
             SKSurface surface = e.Surface;
             SKCanvas canvas = surface.Canvas;
 
+            var tf_stream = Settings.GetResourceStream("TurtleGraphics.graphics.fonts.Pixeled.ttf");
+            var tf = SKTypeface.FromStream(tf_stream);
+            
+
             canvas.Clear(SKColors.Black);
             //canvas.DrawText("<= Commands", e.Info.Width / 2.0f, txt_pen.TextSize, txt_pen);
             //canvas.DrawText("   Settings =>", e.Info.Width / 2.0f, txt_pen.TextSize, txt_pen2);
-            
+
+            canvas.DrawText("is this font different?", e.Info.Width / 2.0f, e.Info.Height / 2, new SKPaint()
+            {
+                Color = SKColors.White,
+                Style = SKPaintStyle.Fill,
+                TextAlign = SKTextAlign.Center,
+                TextSize = 32.0f,
+                Typeface = tf,
+            });
+
             if (this.doRunTur)
             {
                 if (!Settings.Turtle.RunCommands())
@@ -138,6 +153,8 @@ namespace TurtleGraphics
             if(Settings.Turtle.Bitmap != null)
             {
                 canvas.DrawBitmap(Settings.Turtle.Bitmap, 0, 0);
+                
+                
                 //_turtle = RotateBitmap(_turtle, Settings.Turtle.Angle);
 
                 //canvas.DrawBitmap(_turtle, Settings.Turtle.Position - new SKPoint(_turtle.Width/2, _turtle.Height/2));

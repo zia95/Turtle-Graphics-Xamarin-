@@ -12,6 +12,7 @@ using SkiaSharp;
 using Xamarin.Forms.Internals;
 using System.Linq;
 using System.Xml.Serialization;
+using System.Diagnostics;
 
 namespace TurtleGraphics
 {
@@ -175,7 +176,14 @@ namespace TurtleGraphics
         }
 
 
+        public static Stream GetResourceStream(string resId, ContentPage page = null)
+        {
+            Assembly assembly = (page ?? PageMainInstance).GetType().GetTypeInfo().Assembly;
 
+            assembly.GetManifestResourceNames().ForEach(s => Debug.WriteLine(s));
+
+            return assembly.GetManifestResourceStream(resId);
+        }
 
         public static class Sound
         {

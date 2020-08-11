@@ -2,7 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <AndroidDesignerPreferredTheme>Theme.AppCompat.Light.NoActionBar</AndroidDesignerPreferredTheme>
-    <SelectedDevice>pixel_2_oreo_8_0_-_api_26</SelectedDevice>
+    <SelectedDevice>HUAWEI LDN-L21</SelectedDevice>
     <DefaultDevice>pixel_2_oreo_8_0_-_api_26</DefaultDevice>
   </PropertyGroup>
 </Project>
