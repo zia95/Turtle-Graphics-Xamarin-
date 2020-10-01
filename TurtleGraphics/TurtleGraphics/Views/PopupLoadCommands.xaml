@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:local="clr-namespace:TurtleGraphics"
+             xmlns:cview="clr-namespace:TurtleGraphics.Views"
+             x:Class="TurtleGraphics.Views.PopupLoadCommands" ControlTemplate="{x:StaticResource PopupTemplate}" Title="LOAD COMMANDS">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary Source="Resource.xaml"/>
+    </pages:PopupPage.Resources>
+    <pages:PopupPage.Content>
+        <StackLayout Orientation="Horizontal">
+            <Picker x:Name="pkrSaves" BackgroundColor="{StaticResource SecondaryColor2}" TextColor="{StaticResource SecondaryColor1}" 
+                    VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+            
+            <ImageButton x:Name="btnLoad" BackgroundColor="{StaticResource SecondaryColor1}" 
+                         VerticalOptions="Center" HorizontalOptions="End" Margin="10, 0, 0, 0"
+                         Aspect="AspectFit" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_popup_load.png}"/>
+        </StackLayout>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

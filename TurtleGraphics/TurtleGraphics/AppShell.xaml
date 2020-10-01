@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:TurtleGraphics"
-             mc:Ignorable="d"
+             xmlns:local="clr-namespace:TurtleGraphics" xmlns:tpage="clr-namespace:TurtleGraphics.Pages"
+             mc:Ignorable="d" Visual="Material"
              x:Class="TurtleGraphics.AppShell" FlyoutBehavior="Disabled" Shell.NavBarIsVisible="False">
 
     <!--
@@ -12,7 +12,7 @@
         <ShellContent ContentTemplate="{DataTemplate local:PageMain}" />
     </FlyoutItem>
     -->
-    <ShellContent Route="PageMain" ContentTemplate="{DataTemplate local:PageMain}" />
-    <ShellContent Route="PageLogic" ContentTemplate="{DataTemplate local:PageLogic}" />
-    <ShellContent Route="PageSettings" ContentTemplate="{DataTemplate local:PageSettings}" />
+    <ShellContent Route="Main" ContentTemplate="{DataTemplate tpage:Main}" />
+    <ShellContent Route="Logic" ContentTemplate="{DataTemplate tpage:Logic}" />
+    <ShellContent Route="Settings" ContentTemplate="{DataTemplate tpage:Settings}" />
 </Shell>

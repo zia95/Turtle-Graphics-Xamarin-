@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:local="clr-namespace:TurtleGraphics"
+             xmlns:cview="clr-namespace:TurtleGraphics.Views"
+             x:Class="TurtleGraphics.Views.PopupAddCommand" ControlTemplate="{x:StaticResource PopupTemplate}" Title="ADD COMMAND">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary Source="Resource.xaml"/>
+    </pages:PopupPage.Resources>
+    
+    
+    <pages:PopupPage.Content>
+
+        <Grid RowDefinitions="6*,*" >
+            <ListView Grid.Row="0" x:Name="lstCommandTypes" BackgroundColor="{x:StaticResource SecondaryColor1}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="{Binding StyleBackgroundColor}" ColumnDefinitions="1*, 4*" Margin="5, 5, 5, 0">
+
+                                <Image Grid.Column="0" Aspect="Fill" Source="{Binding Icon}" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                <Label Grid.Column="1" Text="{Binding Text}" 
+                                       TextColor="{x:StaticResource SecondaryColor1}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <Grid Grid.Row="1" ColumnDefinitions="6*, *">
+                <Entry Grid.Column="0" x:Name="txtUnits" Placeholder="Units" Keyboard="Numeric" 
+                   PlaceholderColor="{x:StaticResource PrimaryColor}" BackgroundColor="{x:StaticResource SecondaryColor2}" TextColor="{x:StaticResource PrimaryColor}"
+                   IsVisible="False" VerticalOptions="Center"/>
+                <cview:ColorPicker Grid.Column="0" x:Name="clrColorSelector" IsVisible="False" CollapseColumns="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                
+                
+                <ImageButton  Grid.Column="1" x:Name="btnAdd" BackgroundColor="{x:StaticResource SecondaryColor1}" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_popup_add.png}" 
+                              VerticalOptions="Center" HorizontalOptions="End"/>
+            </Grid>
+
+        </Grid>
+    </pages:PopupPage.Content>
+    
+</pages:PopupPage>

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,55 +12,169 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="graphics\fonts\Lobster-Regular.ttf" />
-    <None Remove="graphics\fonts\Pixeled.ttf" />
-    <None Remove="graphics\fonts\PressStart2P-vaV7.ttf" />
-    <None Remove="graphics\turtle\1.png" />
-    <None Remove="graphics\turtle\2.png" />
-    <None Remove="graphics\turtle\3.png" />
-    <None Remove="graphics\turtle\4.png" />
-    <None Remove="graphics\turtle\5.png" />
-    <None Remove="graphics\turtle\6.png" />
-    <None Remove="graphics\turtle\7.png" />
-    <None Remove="sounds\seq_invalid.wav" />
+    <None Remove="Resources\fonts\Lobster-Regular.ttf" />
+    <None Remove="Resources\fonts\Pixeled.ttf" />
+    <None Remove="Resources\fonts\PressStart2P-vaV7.ttf" />
+    <None Remove="Resources\turtle\1.png" />
+    <None Remove="Resources\turtle\2.png" />
+    <None Remove="Resources\turtle\3.png" />
+    <None Remove="Resources\turtle\4.png" />
+    <None Remove="Resources\turtle\5.png" />
+    <None Remove="Resources\turtle\6.png" />
+    <None Remove="Resources\turtle\7.png" />
+    <None Remove="Resources\images\btn_command_add.png" />
+    <None Remove="Resources\images\btn_command_clear.png" />
+    <None Remove="Resources\images\btn_command_ic_backward.png" />
+    <None Remove="Resources\images\btn_command_ic_color.png" />
+    <None Remove="Resources\images\btn_command_ic_end.png" />
+    <None Remove="Resources\images\btn_command_ic_forward.png" />
+    <None Remove="Resources\images\btn_command_ic_left.png" />
+    <None Remove="Resources\images\btn_command_ic_penupdown.png" />
+    <None Remove="Resources\images\btn_command_ic_repeat.png" />
+    <None Remove="Resources\images\btn_command_ic_right.png" />
+    <None Remove="Resources\images\btn_command_load.png" />
+    <None Remove="Resources\images\btn_command_save.png" />
+    <None Remove="Resources\images\btn_num1_off.png" />
+    <None Remove="Resources\images\btn_num1_on.png" />
+    <None Remove="Resources\images\btn_num2_off.png" />
+    <None Remove="Resources\images\btn_num2_on.png" />
+    <None Remove="Resources\images\btn_num3_off.png" />
+    <None Remove="Resources\images\btn_num3_on.png" />
+    <None Remove="Resources\images\btn_num4_off.png" />
+    <None Remove="Resources\images\btn_num4_on.png" />
+    <None Remove="Resources\images\btn_num5_off.png" />
+    <None Remove="Resources\images\btn_num5_on.png" />
+    <None Remove="Resources\images\btn_num6_off.png" />
+    <None Remove="Resources\images\btn_num6_on.png" />
+    <None Remove="Resources\images\btn_popup_add.png" />
+    <None Remove="Resources\images\btn_popup_add_small.png" />
+    <None Remove="Resources\images\btn_popup_close.png" />
+    <None Remove="Resources\images\btn_popup_close_small.png" />
+    <None Remove="Resources\images\btn_popup_load.png" />
+    <None Remove="Resources\images\btn_popup_load_small.png" />
+    <None Remove="Resources\images\btn_popup_save.png" />
+    <None Remove="Resources\images\btn_popup_save_small.png" />
+    <None Remove="Resources\images\btn_reset_off.png" />
+    <None Remove="Resources\images\btn_reset_on.png" />
+    <None Remove="Resources\images\btn_start_off.png" />
+    <None Remove="Resources\images\btn_start_on.png" />
+    <None Remove="Resources\images\nav_logic_off.png" />
+    <None Remove="Resources\images\nav_logic_on.png" />
+    <None Remove="Resources\images\nav_settings_off.png" />
+    <None Remove="Resources\images\nav_settings_on.png" />
+    <None Remove="Resources\images\nav_turtle_off.png" />
+    <None Remove="Resources\images\nav_turtle_on.png" />
+    <None Remove="Resources\images\txt_backgroundcolor.png" />
+    <None Remove="Resources\images\txt_commands.png" />
+    <None Remove="Resources\images\txt_trail.png" />
+    <None Remove="Resources\images\txt_turtlespeed.png" />
+    <None Remove="Resources\sounds\seq_invalid.wav" />
     <None Remove="TODO.TXT" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="graphics\fonts\Lobster-Regular.ttf" />
-    <EmbeddedResource Include="graphics\fonts\Pixeled.ttf" />
-    <EmbeddedResource Include="graphics\fonts\PressStart2P-vaV7.ttf" />
-    <EmbeddedResource Include="graphics\turtle\1.png" />
-    <EmbeddedResource Include="graphics\turtle\2.png" />
-    <EmbeddedResource Include="graphics\turtle\3.png" />
-    <EmbeddedResource Include="graphics\turtle\4.png" />
-    <EmbeddedResource Include="graphics\turtle\5.png" />
-    <EmbeddedResource Include="graphics\turtle\6.png" />
-    <EmbeddedResource Include="graphics\turtle\7.png" />
-    <EmbeddedResource Include="sounds\seq_invalid.wav" />
+    <EmbeddedResource Include="Resources\fonts\Lobster-Regular.ttf" />
+    <EmbeddedResource Include="Resources\fonts\Pixeled.ttf" />
+    <EmbeddedResource Include="Resources\fonts\PressStart2P-vaV7.ttf" />
+    <EmbeddedResource Include="Resources\turtle\1.png" />
+    <EmbeddedResource Include="Resources\turtle\2.png" />
+    <EmbeddedResource Include="Resources\turtle\3.png" />
+    <EmbeddedResource Include="Resources\turtle\4.png" />
+    <EmbeddedResource Include="Resources\turtle\5.png" />
+    <EmbeddedResource Include="Resources\turtle\6.png" />
+    <EmbeddedResource Include="Resources\turtle\7.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_add.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_clear.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_ic_backward.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_ic_color.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_ic_end.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_ic_forward.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_ic_left.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_ic_penupdown.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_ic_repeat.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_ic_right.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_load.png" />
+    <EmbeddedResource Include="Resources\images\btn_command_save.png" />
+    <EmbeddedResource Include="Resources\images\btn_num1_off.png" />
+    <EmbeddedResource Include="Resources\images\btn_num1_on.png" />
+    <EmbeddedResource Include="Resources\images\btn_num2_off.png" />
+    <EmbeddedResource Include="Resources\images\btn_num2_on.png" />
+    <EmbeddedResource Include="Resources\images\btn_num3_off.png" />
+    <EmbeddedResource Include="Resources\images\btn_num3_on.png" />
+    <EmbeddedResource Include="Resources\images\btn_num4_off.png" />
+    <EmbeddedResource Include="Resources\images\btn_num4_on.png" />
+    <EmbeddedResource Include="Resources\images\btn_num5_off.png" />
+    <EmbeddedResource Include="Resources\images\btn_num5_on.png" />
+    <EmbeddedResource Include="Resources\images\btn_num6_off.png" />
+    <EmbeddedResource Include="Resources\images\btn_num6_on.png" />
+    <EmbeddedResource Include="Resources\images\btn_popup_add.png" />
+    <EmbeddedResource Include="Resources\images\btn_popup_add_small.png" />
+    <EmbeddedResource Include="Resources\images\btn_popup_close.png" />
+    <EmbeddedResource Include="Resources\images\btn_popup_close_small.png" />
+    <EmbeddedResource Include="Resources\images\btn_popup_load.png" />
+    <EmbeddedResource Include="Resources\images\btn_popup_load_small.png" />
+    <EmbeddedResource Include="Resources\images\btn_popup_save.png" />
+    <EmbeddedResource Include="Resources\images\btn_popup_save_small.png" />
+    <EmbeddedResource Include="Resources\images\btn_reset_off.png" />
+    <EmbeddedResource Include="Resources\images\btn_reset_on.png" />
+    <EmbeddedResource Include="Resources\images\btn_start_off.png" />
+    <EmbeddedResource Include="Resources\images\btn_start_on.png" />
+    <EmbeddedResource Include="Resources\images\nav_logic_off.png" />
+    <EmbeddedResource Include="Resources\images\nav_logic_on.png" />
+    <EmbeddedResource Include="Resources\images\nav_settings_off.png" />
+    <EmbeddedResource Include="Resources\images\nav_settings_on.png" />
+    <EmbeddedResource Include="Resources\images\nav_turtle_off.png" />
+    <EmbeddedResource Include="Resources\images\nav_turtle_on.png" />
+    <EmbeddedResource Include="Resources\images\txt_backgroundcolor.png" />
+    <EmbeddedResource Include="Resources\images\txt_commands.png" />
+    <EmbeddedResource Include="Resources\images\txt_trail.png" />
+    <EmbeddedResource Include="Resources\images\txt_turtlespeed.png" />
+    <EmbeddedResource Include="Resources\sounds\seq_invalid.wav" />
     <EmbeddedResource Include="TODO.TXT">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SkiaSharp" Version="1.68.3" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.3" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.5" />
+    <PackageReference Include="SkiaSharp" Version="2.80.2" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.8.0.1451" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\PageMain.xaml.cs">
-      <DependentUpon>PageMain.xaml</DependentUpon>
+    <Compile Update="Pages\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
+    <Compile Update="Pages\Logic.xaml.cs">
+      <DependentUpon>Logic.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PopupAddCommand.xaml.cs">
+      <DependentUpon>PopupAddCommand.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Resource.xaml.cs">
+      <DependentUpon>Resource.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TurtleCommandList.xaml.cs">
+      <DependentUpon>TurtleCommandList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NavBar.xaml.cs">
+      <DependentUpon>NavBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TurtleStepper.xaml.cs">
+      <DependentUpon>TurtleStepper.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -67,38 +182,43 @@
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PageCommands.xaml">
+    <EmbeddedResource Update="Pages\Logic.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PageLogic.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PageSettings.xaml">
+    <EmbeddedResource Update="Pages\Settings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PageTabbedNavigation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PageTGScript.xaml">
+    <EmbeddedResource Update="Views\ColorPicker.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ThemeDark.xaml">
+    <EmbeddedResource Update="Views\PopupLoadCommands.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewColorPicker.xaml">
+    <EmbeddedResource Update="Views\PopupMessage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewNavBar.xaml">
+    <EmbeddedResource Update="Views\NavBar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewScriptKeyboard.xaml">
+    <EmbeddedResource Update="Views\PopupAddCommand.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewStepInt.xaml">
+    <EmbeddedResource Update="Views\PopupPicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PopupSaveCommands.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Resource.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TurtleCommandList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TurtleStepper.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

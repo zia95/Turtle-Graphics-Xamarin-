@@ -6,23 +6,70 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 
-namespace TurtleGraphics
+namespace TurtleGraphics.Turtle
 {
     public class SkiaTurtleE : SkiaTurtle
     {
+        public static bool GetCommandTypeInfo(CommandTypes type, out ImageSource Icon, out string Text)
+        {
+            switch (type)
+            {
+                case SkiaTurtleE.CommandTypes.Forward:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_forward.png");
+                    Text = "Forward";
+                    break;
+                case SkiaTurtleE.CommandTypes.Backward:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_backward.png");
+                    Text = "Backward";
+                    break;
+                case SkiaTurtleE.CommandTypes.Left:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_left.png");
+                    Text = "Left";
+                    break;
+                case SkiaTurtleE.CommandTypes.Right:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_right.png");
+                    Text = "Right";
+                    break;
+                case SkiaTurtleE.CommandTypes.Repeat:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_repeat.png");
+                    Text = "Repeat";
+                    break;
+                case SkiaTurtleE.CommandTypes.PenColor:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_color.png");
+                    Text = "Pen Color";
+                    break;
+                case SkiaTurtleE.CommandTypes.End:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_end.png");
+                    Text = "End";
+                    break;
+                case SkiaTurtleE.CommandTypes.PenUp:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_penupdown.png");
+                    Text = "Pen Up";
+                    break;
+                case SkiaTurtleE.CommandTypes.PenDown:
+                    Icon = ImageSource.FromResource("TurtleGraphics.Resources.images.btn_command_ic_penupdown.png");
+                    Text = "Pen Down";
+                    break;
+                default:
+                    Icon = null;
+                    Text = null;
+                    return false;
+            }
+            return true;
+        }
+
+
         public enum CommandTypes
         {
             Forward,
             Backward,
-            Rotate,
             Repeat,
             PenColor,
-            
-            
-
-            EndRepeat,
             Left,
             Right,
+
+
+            End,
             PenUp,
             PenDown,
         }
@@ -37,9 +84,9 @@ namespace TurtleGraphics
             return -1;
         }
 
-        public static bool DoCommandNeedAmount(CommandTypes commandTypes)
+        public static bool DoCommandNeedExtra(CommandTypes commandTypes)
         {
-            return commandTypes >= CommandTypes.Forward && commandTypes <= CommandTypes.Repeat;
+            return commandTypes >= CommandTypes.Forward && commandTypes <= CommandTypes.Right;
         }
 
         public struct CommandInfo
@@ -60,7 +107,7 @@ namespace TurtleGraphics
             }
         }
 
-        public CommandInfo[] Commands { get; set; }
+        public KeyValuePair<SkiaTurtleE.CommandTypes, int>[] Commands { get; set; }
         
         public int CurrentCommandIndex { get; private set; }
 
@@ -114,16 +161,18 @@ namespace TurtleGraphics
             if (this.CurrentCommandIndex >= this.Commands.Length) 
                 return false;
 
-            var curr = this.Commands[this.CurrentCommandIndex];
+            var curr_type = this.Commands[this.CurrentCommandIndex].Key;
+            var curr_units = this.Commands[this.CurrentCommandIndex].Value;
 
-            if(curr.Command == CommandTypes.Forward || curr.Command == CommandTypes.Backward)
+
+            if (curr_type == CommandTypes.Forward || curr_type == CommandTypes.Backward)
             {
                 if(this.DistanceSteps <= 0)
                 {
-                    if (curr.Command == CommandTypes.Forward) 
-                        this.Forward(curr.Amount);
+                    if (curr_type == CommandTypes.Forward) 
+                        this.Forward(curr_units);
                     else 
-                        this.Backward(curr.Amount);
+                        this.Backward(curr_units);
 
                     this.CurrentCommandIndex++;
                 }
@@ -131,8 +180,8 @@ namespace TurtleGraphics
                 {
                     if (this.RemainingDistance == 0)
                     {
-                        if (curr.Command == CommandTypes.Forward) this.SetForwardDistance(curr.Amount, this.DistanceSteps);
-                        else this.SetBackwardDistance(curr.Amount, this.DistanceSteps);
+                        if (curr_type == CommandTypes.Forward) this.SetForwardDistance(curr_units, this.DistanceSteps);
+                        else this.SetBackwardDistance(curr_units, this.DistanceSteps);
                     }
 
                     this.DoMovement();
@@ -141,27 +190,26 @@ namespace TurtleGraphics
                         this.CurrentCommandIndex++;
                 }
             }
-            else if(curr.Command == CommandTypes.Left || curr.Command == CommandTypes.Right || curr.Command == CommandTypes.Rotate)
+            else if(curr_type == CommandTypes.Left || curr_type == CommandTypes.Right)
             {
-                float ang = 0;
-
-                if (curr.Command == CommandTypes.Left) ang = 90 + this.Angle;
-                else if (curr.Command == CommandTypes.Right) ang = -90 + this.Angle;
-                else if (curr.Command == CommandTypes.Rotate) ang = curr.Amount + this.Angle;
-
-                this.Angle = ang;
+                this.Angle += (curr_type == CommandTypes.Left) ? +curr_units: -curr_units;
                 this.CurrentCommandIndex++;
             }
-            else if(curr.Command == CommandTypes.PenUp || curr.Command == CommandTypes.PenDown)
+            else if(curr_type == CommandTypes.PenUp || curr_type == CommandTypes.PenDown)
             {
-                this.PenUp = curr.Command == CommandTypes.PenUp ? true : false;
+                this.PenUp = curr_type == CommandTypes.PenUp ? true : false;
                 this.CurrentCommandIndex++;
             }
-            else if(curr.Command == CommandTypes.Repeat || curr.Command == CommandTypes.EndRepeat)
+            else if(curr_type == CommandTypes.PenColor)
             {
-                if(curr.Command == CommandTypes.Repeat)
+                this.Paint.Color = Views.ColorPicker.GetColorByIndex(curr_units);
+                this.CurrentCommandIndex++;
+            }
+            else if(curr_type == CommandTypes.Repeat || curr_type == CommandTypes.End)
+            {
+                if(curr_type == CommandTypes.Repeat)
                 {
-                    this.repeats.Add(new RepeatInfo(this.CurrentCommandIndex, -1, curr.Amount, curr.Amount, curr, null));
+                    this.repeats.Add(new RepeatInfo(this.CurrentCommandIndex, -1, curr_units, curr_units, null, null));
                 }
                 else
                 {
@@ -169,7 +217,7 @@ namespace TurtleGraphics
                     {
                         var lstidx = this.repeats.Count - 1;
                         var lst = this.repeats[lstidx];
-                        lst.end = curr;
+                        //lst.end = curr;
                         lst.end_idx = this.CurrentCommandIndex;
 
                         lst.remain--;

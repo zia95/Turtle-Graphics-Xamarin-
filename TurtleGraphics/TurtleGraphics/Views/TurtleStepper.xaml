@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TurtleGraphics;assembly=TurtleGraphics"
+             x:Class="TurtleGraphics.Views.TurtleStepper">
+  <ContentView.Content>
+        <Grid ColumnDefinitions="*, *, *, *, *, *">
+            
+            <ImageButton Grid.Column="0" x:Name="btnNum1" Aspect="Fill" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_num1_off.png}" />
+            <ImageButton Grid.Column="1" x:Name="btnNum2" Aspect="Fill" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_num2_off.png}" />
+            <ImageButton Grid.Column="2" x:Name="btnNum3" Aspect="Fill" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_num3_off.png}" />
+            <ImageButton Grid.Column="3" x:Name="btnNum4" Aspect="Fill" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_num4_off.png}" />
+            <ImageButton Grid.Column="4" x:Name="btnNum5" Aspect="Fill" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_num5_off.png}" />
+            <ImageButton Grid.Column="5" x:Name="btnNum6" Aspect="Fill" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_num6_off.png}" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

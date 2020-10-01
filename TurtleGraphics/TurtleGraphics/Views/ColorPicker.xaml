@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TurtleGraphics.Views.ColorPicker">
+  <ContentView.Content>
+        <Grid x:Name="colColorGrid" RowDefinitions="*,*,*,*" RowSpacing="0" ColumnSpacing="0" >
+
+            <Grid x:Name="col0" Grid.Row="0" ColumnDefinitions="*, *, *, *" ColumnSpacing="0">
+                
+                <BoxView Grid.Column="0" x:Name="bxColor0" BackgroundColor="Red"/>
+                <BoxView Grid.Column="1" x:Name="bxColor1" BackgroundColor="Blue"/>
+                <BoxView Grid.Column="2" x:Name="bxColor2" BackgroundColor="Red"/>
+                <BoxView Grid.Column="3" x:Name="bxColor3" BackgroundColor="Blue"/>
+            </Grid>
+            <Grid x:Name="col1" Grid.Row="1" ColumnDefinitions="*, *, *, *" ColumnSpacing="0">
+                <BoxView Grid.Column="0" x:Name="bxColor4" BackgroundColor="Blue"/>
+                <BoxView Grid.Column="1" x:Name="bxColor5" BackgroundColor="Red"/>
+                <BoxView Grid.Column="2" x:Name="bxColor6" BackgroundColor="Blue"/>
+                <BoxView Grid.Column="3" x:Name="bxColor7" BackgroundColor="Red"/>
+            </Grid>
+            <Grid x:Name="col2" Grid.Row="2" ColumnDefinitions="*, *, *, *" ColumnSpacing="0">
+                <BoxView Grid.Column="0" x:Name="bxColor8" BackgroundColor="Red"/>
+                <BoxView Grid.Column="1" x:Name="bxColor9" BackgroundColor="Blue"/>
+                <BoxView Grid.Column="2" x:Name="bxColor10" BackgroundColor="Red"/>
+                <BoxView Grid.Column="3" x:Name="bxColor11" BackgroundColor="Blue"/>
+            </Grid>
+            <Grid x:Name="col3" Grid.Row="3" ColumnDefinitions="*, *, *, *" ColumnSpacing="0">
+                <BoxView Grid.Column="0" x:Name="bxColor12" BackgroundColor="Blue"/>
+                <BoxView Grid.Column="1" x:Name="bxColor13" BackgroundColor="Red"/>
+                <BoxView Grid.Column="2" x:Name="bxColor14" BackgroundColor="Blue"/>
+                <BoxView Grid.Column="3" x:Name="bxColor15" BackgroundColor="Red"/>
+            </Grid>
+
+        </Grid>
+  </ContentView.Content>
+</ContentView>

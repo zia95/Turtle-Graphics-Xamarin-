@@ -5,15 +5,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:TurtleGraphics;assembly:TurtleGrapics;"
+             xmlns:cview="clr-namespace:TurtleGraphics.Views"
              x:Class="TurtleGraphics.App">
     <Application.Resources>
+        <ControlTemplate x:Key="DefaultPageTemplate">
+            <Grid RowDefinitions="1*, 12*" ColumnSpacing="0" RowSpacing="0">
 
-        <ResourceDictionary Source="ThemeDark.xaml" />
+                <cview:NavBar Grid.Row="0"/>
+
+                <ContentPresenter Grid.Row="1" />
+            </Grid>
+        </ControlTemplate>
+        <Color x:Key="PageBackgroundColor">Black</Color>
+
+
+        <Color x:Key="NavigationBarColor">Black</Color>
+
+
+        <Color x:Key="PrimaryColor">#FFFE014E</Color>
+        <Color x:Key="SecondaryColor">Black</Color>
+
+        <Color x:Key="SecondaryColor1">Black</Color>
+        <Color x:Key="SecondaryColor2">White</Color>
+
+        <Color x:Key="PrimaryTextColor">White</Color>
+        <Color x:Key="SecondaryTextColor">Black</Color>
+
+        <Color x:Key="TransparentColor">Transparent</Color>
 
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
             <Setter Property="FontSize" Value="15" />
-            <Setter Property="FontFamily" Value="PressStart2P" />
         </Style>
 
         <Style TargetType="ContentPage">
@@ -25,7 +47,6 @@
             <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
             <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
             <Setter Property="CornerRadius" Value="0" />
-            <Setter Property="FontFamily" Value="PressStart2P" />
         </Style>
 
         <Style TargetType="ListView">

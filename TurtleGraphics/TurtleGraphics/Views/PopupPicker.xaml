@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:local="clr-namespace:TurtleGraphics"
+             xmlns:cview="clr-namespace:TurtleGraphics.Views"
+             x:Class="TurtleGraphics.Views.PopupPicker" ControlTemplate="{x:StaticResource PopupTemplate}" Title="SELECT">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary Source="Resource.xaml"/>
+    </pages:PopupPage.Resources>
+    <pages:PopupPage.Content>
+        <ListView x:Name="lstOptions" BackgroundColor="{x:StaticResource SecondaryColor1}" HorizontalOptions="Center" VerticalOptions="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding}" BackgroundColor="{x:StaticResource SecondaryColor2}" TextColor="{x:StaticResource SecondaryColor1}"
+                                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="10, 10, 10, 0" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

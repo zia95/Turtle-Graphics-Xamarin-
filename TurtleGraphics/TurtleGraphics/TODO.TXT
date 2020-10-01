@@ -1,22 +1,6 @@
-﻿-----------------------------------------------------------------
-+ TODOs                                                         
------------------------------------------------------------------
-1) Remove, move not working because wrong index return. Need ID??
-2) Button to clear command List
-3)
-
-Style:
-1) Style need some work
-
-TGScript:
-1) More flex
-2) highlighting
-3) show help?
-4) fast complete....??
-
-Main:
-1) Better "list text" and "settings text" look.
-
-
-Fonts:
-1) Consistant font....
+﻿1- list item remove,mu,md button....DONE
+2- penup and pendown button text.......DONE
+3- fix settings page......DONE
+4- sounds...??
+5- add remaining commands....DONE
+6- different pre sequences

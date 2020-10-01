@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:local="clr-namespace:TurtleGraphics"
+             x:Class="TurtleGraphics.Views.ViewResource">
+    <ControlTemplate x:Key="PopupTemplate">
+        <!--
+        <Frame VerticalOptions="Center" HorizontalOptions="Center" Padding="2" BackgroundColor="{StaticResource SecondaryColor2}" BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
+            <RelativeLayout BackgroundColor="{StaticResource SecondaryColor1}">
+
+                <StackLayout x:Name="colTopbar" Orientation="Horizontal" BackgroundColor="{StaticResource PrimaryColor}" 
+                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.2}"
+                             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+                    <ImageButton x:Name="btnClose" Clicked="btnPopupClose_Clicked" BackgroundColor="{StaticResource SecondaryColor1}" Aspect="AspectFit" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_popup_close.png}" 
+                              VerticalOptions="Center" HorizontalOptions="Center" Margin="5, 5, 5, 5"/>
+
+                    <Label x:Name="lblTitle" BackgroundColor="{StaticResource PrimaryColor}" Text="{Binding Title}"  Padding="50, 10, 50, 10" 
+                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+
+
+                <ContentPresenter RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=colTopbar, Property=Height, Factor=1 }"
+                                  Padding="10, 5, 10, 10" VerticalOptions="Start" BackgroundColor="Yellow" />
+            </RelativeLayout>
+        </Frame>
+        -->
+        <Frame VerticalOptions="Center" HorizontalOptions="Center" Padding="2" BackgroundColor="{StaticResource SecondaryColor2}" 
+               BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
+            <StackLayout BackgroundColor="{StaticResource SecondaryColor1}">
+
+                <StackLayout x:Name="colTopbar" Orientation="Horizontal" BackgroundColor="{StaticResource PrimaryColor}">
+                    <ImageButton x:Name="btnClose" Clicked="btnPopupClose_Clicked" BackgroundColor="{StaticResource PrimaryColor}" 
+                                 Aspect="AspectFit" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_popup_close_small.png}"
+                                 VerticalOptions="Center" HorizontalOptions="Center" Margin="5, 5, 5, 5"/>
+
+                    <Label x:Name="lblTitle" BackgroundColor="{StaticResource PrimaryColor}" Text="{Binding Title}"  Padding="50, 10, 50, 10" 
+                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+
+
+                <ContentPresenter Padding="10, 5, 10, 10" VerticalOptions="Start" />
+            </StackLayout>
+        </Frame>
+    </ControlTemplate>
+</ResourceDictionary>
