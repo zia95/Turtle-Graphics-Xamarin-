@@ -92,6 +92,7 @@ namespace TurtleGraphics.Views
                     {
                         if (string.IsNullOrWhiteSpace(this.txtUnits.Text) || int.TryParse(this.txtUnits.Text, out int units) == false)
                         {
+                            Turtle.SoundManager.Play(Turtle.SoundManager.SND_ERROR);
                             PopupMessage popupMessage = new PopupMessage("Invalid Units", "Please Input valid units.");
                             PopupNavigation.Instance.PushAsync(popupMessage);
                             //DisplayAlert("Invalid Units", "Please Input valid units.", "OK");
@@ -101,6 +102,7 @@ namespace TurtleGraphics.Views
                         this.ResultUnits = units;
                     }
                 }
+                Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
                 this.Success?.Invoke(this, EventArgs.Empty);
                 PopupNavigation.Instance.PopAsync();
             };

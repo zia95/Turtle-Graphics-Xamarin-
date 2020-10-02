@@ -14,7 +14,7 @@
 
         <ScrollView Grid.Row="1">
 
-            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 
                 <Image Grid.Row="0" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,5,10,5" 
                            Source="{local:ImageResource TurtleGraphics.Resources.images.txt_turtlespeed.png}" />
@@ -31,11 +31,8 @@
 
                 <cview:ColorPicker Grid.Row="5" x:Name="clrBackground" Margin="30,10,30,10"/>
 
-
-
-                <!--
-                    <Button Grid.Row="6" x:Name="btnContact" Text="Contact/Report" />
-                    -->
+                <ImageButton Grid.Row="6" x:Name="btnContact" Margin="30, 30, 30, 10" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill"
+                             Aspect="Fill" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_contact_report.png}" />
             </Grid>
 
         </ScrollView>

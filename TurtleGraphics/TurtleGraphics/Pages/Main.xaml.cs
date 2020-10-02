@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System.Reflection;
+using TurtleGraphics.Turtle;
 
 namespace TurtleGraphics.Pages
 {
@@ -87,26 +88,10 @@ namespace TurtleGraphics.Pages
                     this.RefreshSpeed();
                     Turtle.Settings.Turtle.Reset(false);
                 }
-                //load test commands if commands are null...
-                if (Turtle.Settings.Commands == null || Turtle.Settings.Commands.Count() <= 0)
+                //load any preset commands if commands are null...
+                if ((Turtle.Settings.Commands == null || Turtle.Settings.Commands.Count() <= 0) && SaveManager.PresetCommands != null)
                 {
-                    //dummy test....
-                    List<KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>> _c = new List<KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>>();
-                    _c.AddRange(new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>[] 
-                    {
-                        new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>(Turtle.SkiaTurtleE.CommandTypes.Repeat, 5),
-                        new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>(Turtle.SkiaTurtleE.CommandTypes.Repeat, 5),
-                        new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>(Turtle.SkiaTurtleE.CommandTypes.Forward, 300),
-                        new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>(Turtle.SkiaTurtleE.CommandTypes.Right, 144),
-                        new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>(Turtle.SkiaTurtleE.CommandTypes.End, 0),
-
-                        new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>(Turtle.SkiaTurtleE.CommandTypes.Left, 144),
-                        new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>(Turtle.SkiaTurtleE.CommandTypes.Forward, 100),
-                        new KeyValuePair<Turtle.SkiaTurtleE.CommandTypes, int>(Turtle.SkiaTurtleE.CommandTypes.End, 0),
-                    }
-                    );
-
-                    Turtle.Settings.Commands = _c;
+                    Turtle.Settings.Commands = SaveManager.PresetCommands[new Random().Next(0, SaveManager.PresetCommands.Length)].Value;
                 }
 
                 Turtle.Settings.Turtle.Commands = Turtle.Settings.Commands.ToArray();
@@ -115,9 +100,10 @@ namespace TurtleGraphics.Pages
                 this.doRunTur = true;
 
                 this.update_button_image(true, this.doRunTur);
-
+                Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
             };
             this.btnReset.Clicked += BtnReset_Clicked;
+            
         }
 
         private void BtnReset_Clicked(object sender, EventArgs e)
@@ -142,6 +128,7 @@ namespace TurtleGraphics.Pages
             Turtle.Settings.RefreshCanvas();
             this.RefreshSpeed();
             Turtle.Settings.Turtle.Reset(true);
+            Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
         }
 
         private void CanvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)

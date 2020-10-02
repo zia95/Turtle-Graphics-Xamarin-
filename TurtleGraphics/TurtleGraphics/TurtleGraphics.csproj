@@ -4,6 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <LangVersion>8.0</LangVersion>
+    <PackageIcon>logo.png</PackageIcon>
+    <RepositoryType>GitHub</RepositoryType>
+    <RepositoryUrl>https://github.com/zia95/Turtle-Graphics-Xamarin-</RepositoryUrl>
+    <PackageTags>Turtle, Graphics, Logo</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,6 +20,9 @@
     <None Remove="Resources\fonts\Lobster-Regular.ttf" />
     <None Remove="Resources\fonts\Pixeled.ttf" />
     <None Remove="Resources\fonts\PressStart2P-vaV7.ttf" />
+    <None Remove="Resources\images\btn_contact_report.png" />
+    <None Remove="Resources\sounds\click.wav" />
+    <None Remove="Resources\sounds\error.wav" />
     <None Remove="Resources\turtle\1.png" />
     <None Remove="Resources\turtle\2.png" />
     <None Remove="Resources\turtle\3.png" />
@@ -76,6 +84,9 @@
     <EmbeddedResource Include="Resources\fonts\Lobster-Regular.ttf" />
     <EmbeddedResource Include="Resources\fonts\Pixeled.ttf" />
     <EmbeddedResource Include="Resources\fonts\PressStart2P-vaV7.ttf" />
+    <EmbeddedResource Include="Resources\images\btn_contact_report.png" />
+    <EmbeddedResource Include="Resources\sounds\click.wav" />
+    <EmbeddedResource Include="Resources\sounds\error.wav" />
     <EmbeddedResource Include="Resources\turtle\1.png" />
     <EmbeddedResource Include="Resources\turtle\2.png" />
     <EmbeddedResource Include="Resources\turtle\3.png" />
@@ -129,7 +140,6 @@
     <EmbeddedResource Include="Resources\images\txt_commands.png" />
     <EmbeddedResource Include="Resources\images\txt_trail.png" />
     <EmbeddedResource Include="Resources\images\txt_turtlespeed.png" />
-    <EmbeddedResource Include="Resources\sounds\seq_invalid.wav" />
     <EmbeddedResource Include="TODO.TXT">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

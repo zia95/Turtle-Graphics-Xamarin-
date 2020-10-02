@@ -11,11 +11,11 @@
     <pages:PopupPage.Content>
         <StackLayout Orientation="Horizontal">
             <Picker x:Name="pkrSaves" BackgroundColor="{StaticResource SecondaryColor2}" TextColor="{StaticResource SecondaryColor1}" 
-                    VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                    VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
             
             <ImageButton x:Name="btnLoad" BackgroundColor="{StaticResource SecondaryColor1}" 
                          VerticalOptions="Center" HorizontalOptions="End" Margin="10, 0, 0, 0"
-                         Aspect="AspectFit" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_popup_load.png}"/>
+                         Aspect="AspectFit" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_popup_load_small.png}"/>
         </StackLayout>
     </pages:PopupPage.Content>
 </pages:PopupPage>

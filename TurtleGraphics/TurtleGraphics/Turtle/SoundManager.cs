@@ -7,25 +7,9 @@ namespace TurtleGraphics.Turtle
 {
     public static class SoundManager
     {
-        public const string SEQ_INVALID = "TurtleGraphics.Resources.sounds.seq_invalid.wav";
+        public const string SND_CLICK = "TurtleGraphics.Resources.sounds.click.wav";
+        public const string SND_ERROR = "TurtleGraphics.Resources.sounds.error.wav";
 
-
-        public enum SND_ID
-        {
-            SEQ_INVALID,
-        };
-
-
-        public static string GetSoundById(SND_ID id)
-        {
-            switch (id)
-            {
-                case SND_ID.SEQ_INVALID: return SEQ_INVALID;
-            }
-            throw new NotSupportedException($"ID:{id}, is not supported.");
-        }
-
-        public static void Play(SND_ID id) => Play(GetSoundById(id));
         public static void Play(string snd)
         {
             var assembly = typeof(App).Assembly;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TurtleGraphics.Turtle;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -64,8 +64,12 @@ namespace TurtleGraphics.Views
                             if(btn_i == btn_sender)
                             {
                                 if (i + 1 == this.Value)
+                                {
+                                    SoundManager.Play(SoundManager.SND_ERROR);
                                     break;
+                                }
 
+                                SoundManager.Play(SoundManager.SND_CLICK);
                                 var old_val = _val;
                                 this.Value = i + 1;
                                 this.ValueChanged?.Invoke(this, new ValueChangedEventArgs(old_val, this.Value));

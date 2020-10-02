@@ -152,10 +152,10 @@ namespace TurtleGraphics.Views
 
 
         private int _old_selection = -1;
-        private void select_color(int clr)
+        private bool select_color(int clr)
         {
             if (this._old_selection == clr)
-                return;
+                return false;
 
             if (clr >= 0 && clr < this.m_color_views.Count)
             {
@@ -166,7 +166,9 @@ namespace TurtleGraphics.Views
 
                 this._old_selection = clr;
                 this.Selected = this._old_selection;
+                return true;
             }
+            return false;
         }
 
 
@@ -187,8 +189,16 @@ namespace TurtleGraphics.Views
                     int color_idx;
                     if(this.m_color_views.TryGetValue(s as BoxView, out color_idx))
                     {
-                        this.select_color(color_idx);
-                        this.SelectionChanged?.Invoke(this, new EventArgs());
+                        if(this.select_color(color_idx))
+                        {
+                            Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
+                            this.SelectionChanged?.Invoke(this, new EventArgs());
+                        }
+                        else
+                        {
+                            Turtle.SoundManager.Play(Turtle.SoundManager.SND_ERROR);
+                        }
+                        
                     }
                 };
                 cbox.GestureRecognizers.Add(tap_ges);

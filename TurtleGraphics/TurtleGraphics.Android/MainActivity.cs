@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace TurtleGraphics.Droid
 {
-    [Activity(Label = "TurtleGraphics", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, 
+    [Activity(Label = "TurtleGraphics", Icon = "@drawable/logo", Theme = "@style/MainTheme", MainLauncher = true, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

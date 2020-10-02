@@ -29,6 +29,7 @@ namespace TurtleGraphics.Pages
             //add button clicked
             this.btnAddCommand.Clicked += (s, e) =>
             {
+                Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
                 PopupNavigation.Instance.PushAsync(new Views.PopupAddCommand(
                     (s, e) => 
                     {
@@ -41,6 +42,7 @@ namespace TurtleGraphics.Pages
             //clear button clicked
             this.btnClearCommands.Clicked += (s, e) =>
             {
+                Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
                 this.lstCommands.Clear();
             };
 
@@ -50,10 +52,12 @@ namespace TurtleGraphics.Pages
                 var cmds = this.lstCommands.ToEnumerable().ToList();
                 if(cmds.Count > 0)
                 {
+                    Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
                     PopupNavigation.Instance.PushAsync(new PopupSaveCommands(cmds, (s, e) => { }));
                 }
                 else
                 {
+                    Turtle.SoundManager.Play(Turtle.SoundManager.SND_ERROR);
                     PopupMessage.Show("Save", "Empty list can't be saved.");
                 }
             };
@@ -61,13 +65,15 @@ namespace TurtleGraphics.Pages
             //load button clicked
             this.btnLoadCommands.Clicked += (s, e) =>
             {
-                if(SaveManager.GetSavedCommandListCount() > 0)
+                if(SaveManager.GetSavedCommandListCount() > 0 || SaveManager.PresetCommands?.Length > 0)
                 {
+                    Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
                     PopupNavigation.Instance.PushAsync(
                         new PopupLoadCommands((s, e) => { ((PopupLoadCommands)s).Result.ForEach(x => this.lstCommands.Add(x.Key, x.Value)); } ));
                 }
                 else
                 {
+                    Turtle.SoundManager.Play(Turtle.SoundManager.SND_ERROR);
                     PopupMessage.Show("Load", "No saved list to load.");
                 }
             };

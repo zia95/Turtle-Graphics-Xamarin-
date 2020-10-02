@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using TurtleGraphics.Turtle;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -96,9 +96,13 @@ namespace TurtleGraphics.Views
                     if (pce.Block)
                         return;
 
-
+                    SoundManager.Play(SoundManager.SND_CLICK);
                     await Shell.Current.GoToAsync("//" + nameof(Pages.Main), pce.Animate);
                     this.update_button_image(cp);
+                }
+                else
+                {
+                    SoundManager.Play(SoundManager.SND_ERROR);
                 }
             };
 
@@ -118,11 +122,15 @@ namespace TurtleGraphics.Views
                     if (pce.Block)
                         return;
 
-
+                    SoundManager.Play(SoundManager.SND_CLICK);
                     await Shell.Current.GoToAsync("//" + nameof(Pages.Logic), pce.Animate);
 
                     this.update_button_image(cp);
                 }
+                else
+                {
+                    SoundManager.Play(SoundManager.SND_ERROR);
+                }    
                 
             };
             this.btnSettings.Clicked += async (s, e) => 
@@ -140,15 +148,17 @@ namespace TurtleGraphics.Views
                     if (pce.Block)
                         return;
 
-
+                    SoundManager.Play(SoundManager.SND_CLICK);
                     await Shell.Current.GoToAsync("//" + nameof(Pages.Settings), pce.Animate);
 
                     this.update_button_image(cp);
                 }
+                else
+                {
+                    SoundManager.Play(SoundManager.SND_ERROR);
+                }
                 
             };
-
-            this.PropertyChanged += NavBar_PropertyChanged;
 
             this.SizeChanged += NavBar_SizeChanged;
             
@@ -157,11 +167,6 @@ namespace TurtleGraphics.Views
         private void NavBar_SizeChanged(object sender, EventArgs e)
         {
             this.update_button_image(this.CurrentPage);
-        }
-
-        private void NavBar_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-
         }
     }
 }

@@ -12,10 +12,11 @@
     
     <pages:PopupPage.Content>
       <StackLayout Orientation="Horizontal">
-            <Entry x:Name="txtName" Placeholder="Save Name" BackgroundColor="{StaticResource SecondaryColor2}" PlaceholderColor="{StaticResource SecondaryColor1}" TextColor="{StaticResource SecondaryColor1}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+            <Entry x:Name="txtName" Placeholder="Save Name" BackgroundColor="{StaticResource SecondaryColor2}" PlaceholderColor="{StaticResource SecondaryColor1}" TextColor="{StaticResource SecondaryColor1}" 
+                   VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
             <ImageButton x:Name="btnSave" BackgroundColor="{StaticResource SecondaryColor1}" 
                          VerticalOptions="Center" HorizontalOptions="End" Margin="10, 0, 0, 0"
-                         Aspect="AspectFit" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_popup_save.png}"/>
+                         Aspect="AspectFit" Source="{local:ImageResource TurtleGraphics.Resources.images.btn_popup_save_small.png}"/>
         </StackLayout>
   </pages:PopupPage.Content>
 </pages:PopupPage>

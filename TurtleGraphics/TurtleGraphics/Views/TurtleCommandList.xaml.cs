@@ -121,12 +121,13 @@ namespace TurtleGraphics.Views
                         this.mListItems.RemoveAt(e.SelectedItemIndex);
                     });
                 */
-
+                //Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
                 string opt = await this.GetParentPage().DisplayActionSheet("Actions", "Close", null, options);
                 if(opt == options[0])
                 {
                     if(e.ItemIndex > 0)
                     {
+                        
                         this.mListItems.Move(e.ItemIndex, e.ItemIndex-1);
                     }
                 }

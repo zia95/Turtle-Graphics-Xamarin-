@@ -32,7 +32,7 @@
             <Grid Grid.Row="1" ColumnDefinitions="6*, *">
                 <Entry Grid.Column="0" x:Name="txtUnits" Placeholder="Units" Keyboard="Numeric" 
                    PlaceholderColor="{x:StaticResource PrimaryColor}" BackgroundColor="{x:StaticResource SecondaryColor2}" TextColor="{x:StaticResource PrimaryColor}"
-                   IsVisible="False" VerticalOptions="Center"/>
+                   IsVisible="False" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 <cview:ColorPicker Grid.Column="0" x:Name="clrColorSelector" IsVisible="False" CollapseColumns="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                 
                 

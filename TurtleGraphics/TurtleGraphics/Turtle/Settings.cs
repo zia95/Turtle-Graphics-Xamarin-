@@ -43,43 +43,5 @@ namespace TurtleGraphics.Turtle
             TurtleSpeed = SaveManager.GetTurtleSpeed();
             PenSize = SaveManager.GetLineSize();
         }
-
-        public static SKBitmap GetResourceSKBitmap(string resid)
-        {
-            Assembly assembly = typeof(Pages.Main).Assembly;
-
-            using (Stream stream = assembly.GetManifestResourceStream(resid))
-            {
-                return SKBitmap.Decode(stream);
-            }
-        }
-        public static IEnumerable<SKBitmap> GetResourceSKBitmap(params string[] resids)
-        {
-            Assembly assembly = typeof(Pages.Main).Assembly;
-
-            foreach(string resId in resids)
-            {
-                using (Stream stream = assembly.GetManifestResourceStream(resId))
-                {
-                    yield return SKBitmap.Decode(stream).Resize(new SKSizeI(16, 16), SKFilterQuality.Low);
-                }
-            }
-        }
-
-        public static ImageSource GetResourceImage(string resid)
-        {
-            Assembly assembly = typeof(Pages.Main).Assembly;
-            return ImageSource.FromResource(resid, assembly);
-        }
-
-        public static IEnumerable<ImageSource> GetResourceImage(params string[] resids)
-        {
-            Assembly assembly = typeof(Pages.Main).Assembly;
-
-            foreach (string resId in resids)
-            {
-                yield return ImageSource.FromResource(resId, assembly);
-            }
-        }
     }
 }

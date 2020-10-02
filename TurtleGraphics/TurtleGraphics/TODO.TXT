@@ -1,6 +1,8 @@
 ﻿1- list item remove,mu,md button....DONE
 2- penup and pendown button text.......DONE
 3- fix settings page......DONE
-4- sounds...??
+4- sounds...??..........DONE?
 5- add remaining commands....DONE
-6- different pre sequences
+6- different pre sequences...DONE
+7- cleanup MAIN
+8- cleanup Settings

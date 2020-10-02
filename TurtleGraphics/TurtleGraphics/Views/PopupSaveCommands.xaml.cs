@@ -42,16 +42,19 @@ namespace TurtleGraphics.Views
                 {
                     if(Turtle.SaveManager.SaveCommandList(name, this.mCommandList.ToList()))
                     {
+                        Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
                         this.Success?.Invoke(this, EventArgs.Empty);
                         this.Close(true);
                     }
                     else
                     {
+                        Turtle.SoundManager.Play(Turtle.SoundManager.SND_ERROR);
                         PopupMessage.Show("Error", $"Failed to save {name}.");
                     }
                 }
                 else
                 {
+                    Turtle.SoundManager.Play(Turtle.SoundManager.SND_ERROR);
                     PopupMessage.Show("Error", $"Name '{name}' is already in use.");
                 }
             };

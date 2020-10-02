@@ -28,8 +28,12 @@ namespace TurtleGraphics.Views
         {
             InitializeComponent();
             this.Success = on_success;
+            var lst = SaveManager.LoadCommandLists().ToList();
+            if (SaveManager.PresetCommands != null)
+                lst.AddRange(SaveManager.PresetCommands);
 
-            this.mSavedLists = SaveManager.LoadCommandLists().ToArray();
+            this.mSavedLists = lst.ToArray();
+            
             this.Appearing += (s, e) => {
                 if (this.mSavedLists.Length <= 0)
                 {
@@ -41,6 +45,7 @@ namespace TurtleGraphics.Views
             this.mLoadListItems = new ObservableCollection<string>();
             this.mSavedLists.ForEach(elm => this.mLoadListItems.Add(elm.Key));
             
+            
             this.pkrSaves.ItemsSource = this.mLoadListItems;
 
             this.pkrSaves.SelectedIndex = 0;
@@ -48,6 +53,7 @@ namespace TurtleGraphics.Views
 
             this.btnLoad.Clicked += (s, e) =>
             {
+                Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
                 this.Result = this.mSavedLists[this.pkrSaves.SelectedIndex].Value;
                 this.Success?.Invoke(this, EventArgs.Empty);
                 this.Close();
