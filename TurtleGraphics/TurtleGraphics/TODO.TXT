@@ -6,3 +6,11 @@
 6- different pre sequences...DONE
 7- cleanup MAIN
 8- cleanup Settings
+9- command list fix "end...." command...DONE
+10- add sound turn on/off button
+
+BUGS:
+1- after running commands. if pen is up nothing will be drawn. (Pen should be up).........DONE
+2- mobile back button doesn't work....... DONE
+3- canvas timer never stops.. multiple???? ........... DONE...
+4- Settings contact/report button not working.......done

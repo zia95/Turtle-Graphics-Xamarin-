@@ -35,18 +35,58 @@ namespace TurtleGraphics.Pages
             }
         }
 
+
+        public class CanvasTimer
+        {
+            public int Speed { get; private set; }
+            public SKCanvasView Canvas { get; private set; }
+
+            private bool m_stop;
+            private bool canvas_timer() 
+            {
+                if(!this.m_stop)
+                {
+                    this.Canvas.InvalidateSurface();
+                }
+                
+                return !this.m_stop; 
+            }
+
+            public static CanvasTimer StartTimer(SKCanvasView canvas, int speed)
+            {
+                var tmr = new CanvasTimer();
+                tmr.Canvas = canvas;
+                tmr.Speed = speed;
+                tmr.m_stop = false;
+                
+                Turtle.Settings.Turtle.DistanceSteps = tmr.Speed == 6 ? 0 : 10 * tmr.Speed;
+
+
+                Device.StartTimer(TimeSpan.FromMilliseconds(100), tmr.canvas_timer);
+
+                return tmr;
+            }
+
+            public void StopTimer() => this.m_stop = true;
+        }
+        private CanvasTimer m_canvastimer = null;
         public void RefreshSpeed()
         {
-            if (Turtle.Settings.TurtleSpeed > 0)
+            //Func<bool> canvas_timer = () => { canvasView.InvalidateSurface(); return true; };
+            //float spd = Turtle.Settings.TurtleSpeed;
+
+            if (this.m_canvastimer != null)
             {
-                Turtle.Settings.Turtle.DistanceSteps = 1;
-                Device.StartTimer(TimeSpan.FromSeconds(1f / Turtle.Settings.TurtleSpeed), () => { canvasView.InvalidateSurface(); return true; });
+                this.m_canvastimer.StopTimer();
+                this.m_canvastimer = null;
             }
-            else
+
+            if (Turtle.Settings.TurtleSpeed <= 0)
             {
-                Turtle.Settings.Turtle.DistanceSteps = 0;
-                Device.StartTimer(TimeSpan.FromSeconds(1f / 60f), () => { canvasView.InvalidateSurface(); return true; });
+                Turtle.Settings.TurtleSpeed = 6;
             }
+
+            this.m_canvastimer = CanvasTimer.StartTimer(this.canvasView, (int)Turtle.Settings.TurtleSpeed);
         }
 
         public Main()
@@ -68,6 +108,7 @@ namespace TurtleGraphics.Pages
             this.btnStart.Clicked += (s, e) =>
             {
                 this.btnStart.IsEnabled = false;
+                
                 if(Turtle.Settings.Turtle.Bitmap == null)
                 {
                     var siz = this.canvasView.CanvasSize;
@@ -95,7 +136,12 @@ namespace TurtleGraphics.Pages
                 }
 
                 Turtle.Settings.Turtle.Commands = Turtle.Settings.Commands.ToArray();
-                
+
+
+                //reset some vars before running
+                //Turtle.Settings.Turtle.Paint.Color = Views.ColorPicker.GetColorByIndex(0);
+                //Turtle.Settings.Turtle.PenUp = false;
+
 
                 this.doRunTur = true;
 
@@ -126,7 +172,7 @@ namespace TurtleGraphics.Pages
 
 
             Turtle.Settings.RefreshCanvas();
-            this.RefreshSpeed();
+            //this.RefreshSpeed();
             Turtle.Settings.Turtle.Reset(true);
             Turtle.SoundManager.Play(Turtle.SoundManager.SND_CLICK);
         }

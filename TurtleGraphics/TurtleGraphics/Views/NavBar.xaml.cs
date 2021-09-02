@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TurtleGraphics.Turtle;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Rg.Plugins.Popup.Services;
 
 namespace TurtleGraphics.Views
 {
@@ -39,9 +40,20 @@ namespace TurtleGraphics.Views
         {
             get
             {
+                var _cp = Shell.Current.CurrentPage;
+
+                bool set = _cp is Pages.Settings;
+                bool man = _cp is Pages.Main;
+                bool log = _cp is Pages.Logic;
+                if (man) return TurtlePages.Main;
+                return (log) ? TurtlePages.Logic : TurtlePages.Settings;
+
+
+                /*
                 var p = this.GetParentPage();
                 if (p is Pages.Main) return TurtlePages.Main;
                 return (p is Pages.Logic) ? TurtlePages.Logic : TurtlePages.Settings;
+                */
             }
         }
 
@@ -81,8 +93,60 @@ namespace TurtleGraphics.Views
         {
             InitializeComponent();
 
-            this.btnTurtle.Clicked += async (s, e) =>
+            
+            Action<bool> go_to_main_page = async delegate(bool from_back_button)
             {
+                var cp = this.CurrentPage;
+                if (cp != TurtlePages.Main)
+                {
+                    var pce = new PageChangeEventArgs()
+                    {
+                        CurrentPage = cp,
+                        Page = TurtlePages.Main
+                    };
+                    this.PageChanging?.Invoke(this, pce);
+
+                    if (pce.Block)
+                        return;
+
+                    SoundManager.Play(SoundManager.SND_CLICK);
+                    await Shell.Current.GoToAsync("//" + nameof(Pages.Main), pce.Animate);
+
+                    this.update_button_image(from_back_button ? TurtlePages.Main : cp);
+                }
+                else
+                {
+                    SoundManager.Play(SoundManager.SND_ERROR);
+                }
+            };
+
+
+            if(AppShell.DoBlockBackButton == null)
+            {
+                AppShell.DoBlockBackButton += (s, e) =>
+                {
+                    if (PopupNavigation.Instance.PopupStack.Count == 0)
+                    {
+                        var cp = this.CurrentPage;
+
+                        if (cp != TurtlePages.Main)
+                        {
+
+                            go_to_main_page(true);
+                            return true;
+                        }
+                    }
+                    
+                    return false;
+                };
+            }
+
+            
+
+            this.btnTurtle.Clicked +=  (s, e) =>
+            {
+                go_to_main_page(false);
+                /*
                 var cp = this.CurrentPage;
                 if (cp != TurtlePages.Main)
                 {
@@ -104,6 +168,7 @@ namespace TurtleGraphics.Views
                 {
                     SoundManager.Play(SoundManager.SND_ERROR);
                 }
+                */
             };
 
 

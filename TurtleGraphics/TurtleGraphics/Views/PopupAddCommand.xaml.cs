@@ -75,6 +75,9 @@ namespace TurtleGraphics.Views
 
             this.btnAdd.Clicked += (s, e) =>
             {
+                if (LastSelectedIndex <= -1)
+                    return;
+
                 var curr = this.mListItems[LastSelectedIndex];
 
 

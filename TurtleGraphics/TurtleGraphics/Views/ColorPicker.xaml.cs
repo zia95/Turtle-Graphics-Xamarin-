@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-using Xamarin.Forms.Markup;
+//using Xamarin.Forms.Markup;
 using System.Diagnostics;
 
 namespace TurtleGraphics.Views

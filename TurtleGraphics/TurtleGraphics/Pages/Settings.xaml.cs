@@ -26,18 +26,21 @@ namespace TurtleGraphics.Pages
             Turtle.Settings.TurtleSpeed = SaveManager.GetTurtleSpeed();
             Turtle.Settings.PenSize = SaveManager.GetLineSize(1);
 
-            
 
 
-            this.tstpTurtleSpeed.Value = (Turtle.Settings.TurtleSpeed == 0) ? 6 : ((int)Turtle.Settings.TurtleSpeed / 10) - 1;
+
+            this.tstpTurtleSpeed.Value = Turtle.Settings.TurtleSpeed;//(Turtle.Settings.TurtleSpeed == 0) ? 6 : ((int)Turtle.Settings.TurtleSpeed / 10) - 1;
             this.tstpLineSize.Value = (int)Turtle.Settings.PenSize;
 
             Turtle.Settings.RefreshCanvas();
             this.tstpTurtleSpeed.ValueChanged += (s, e) =>
             {
-                float spd_val = (float)(this.tstpTurtleSpeed.Value + 1) * 10;
+                Turtle.Settings.TurtleSpeed = (float)(this.tstpTurtleSpeed.Value);//new....
 
-                Turtle.Settings.TurtleSpeed = (spd_val <= 60) ? spd_val : 0.0f;
+
+                //float spd_val = (float)(this.tstpTurtleSpeed.Value) * 10;
+
+                //Turtle.Settings.TurtleSpeed = (spd_val <= 60) ? spd_val : 0.0f;
                 SaveManager.SetTurtleSpeed((int)Turtle.Settings.TurtleSpeed);
 
 
@@ -58,6 +61,11 @@ namespace TurtleGraphics.Pages
                 SaveManager.SetCanvasColorIndex(this.clrBackground.Selected);
 
                 Turtle.Settings.RefreshCanvas();
+            };
+
+            this.btnContact.Clicked += (s, e) =>
+            {
+                Xamarin.Essentials.Launcher.TryOpenAsync(new Uri("https://play.google.com/store/apps/details?id=com.x2byteapps.turtlegraphics"));
             };
         }
     }

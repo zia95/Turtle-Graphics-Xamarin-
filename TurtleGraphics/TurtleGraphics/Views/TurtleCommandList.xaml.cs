@@ -37,11 +37,9 @@ namespace TurtleGraphics.Views
             }
             //units acts as a color index value for color view....
             public int Units { get; set; }
-            public bool ShouldShowUnits { 
+            public bool ShouldShowUnits {
                 get =>
-                    !this.ShouldShowColor &&
-                    this.CommandType != Turtle.SkiaTurtleE.CommandTypes.PenDown &&
-                    this.CommandType != Turtle.SkiaTurtleE.CommandTypes.PenUp; 
+                    !this.ShouldShowColor && Turtle.SkiaTurtleE.DoCommandNeedExtra(this.CommandType);
             }
             public bool ShouldShowColor { get => this.CommandType == Turtle.SkiaTurtleE.CommandTypes.PenColor; }
             public Color PenColor { get => (this.Units >= 0 && this.Units < ColorPicker.ViewColors.Length) ? ColorPicker.ViewColors[this.Units].ToFormsColor() : Color.Yellow; }
