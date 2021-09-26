@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TurtleGraphics.Misc;
 
 namespace TurtleGraphics
 {
@@ -9,7 +10,15 @@ namespace TurtleGraphics
         public App()
         {
             InitializeComponent();
-            //this.MainPage = new PageMain();
+
+            CrashReporting.Enable();
+
+            string dev_id = DependencyService.Get<Services.IFileSystemHelper>().GetDeviceId();
+
+            if (dev_id != null)
+                CrashReporting.UserId = dev_id;
+
+
             this.MainPage = new AppShell();
         }
 

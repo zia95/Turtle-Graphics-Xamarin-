@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "506514563119",
+    "project_id": "turtlegraphics-90080",
+    "storage_bucket": "turtlegraphics-90080.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506514563119:android:8445e323f1f9b4d607a6da",
+        "android_client_info": {
+          "package_name": "com.x2byteapps.turtlegraphics2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506514563119-d02954nga3fe0cd85h8khup7qckohvb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbUUg9IkjnML120Nc-MBRejrkw5KSu9pU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506514563119-d02954nga3fe0cd85h8khup7qckohvb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

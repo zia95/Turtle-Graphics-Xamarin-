@@ -65,7 +65,7 @@ namespace TurtleGraphics.Pages
 
             this.btnContact.Clicked += (s, e) =>
             {
-                Xamarin.Essentials.Launcher.TryOpenAsync(new Uri("https://play.google.com/store/apps/details?id=com.x2byteapps.turtlegraphics"));
+                Xamarin.Essentials.Launcher.TryOpenAsync(new Uri("https://play.google.com/store/apps/details?id=com.x2byteapps.turtlegraphics2"));
             };
         }
     }
